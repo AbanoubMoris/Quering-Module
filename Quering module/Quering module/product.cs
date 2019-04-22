@@ -14,7 +14,7 @@ namespace Quering_module
         public String Name;
         public int price;
 
-        public List<List<string>> prod = new List<List<string>>();
+        public List<product> prod = new List<product>();
         public void ReadData()
         {
             XmlSerializer xsSubmit = new XmlSerializer(prod.GetType());
