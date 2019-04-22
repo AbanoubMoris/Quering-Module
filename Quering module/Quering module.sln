@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.202
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quering module", "Quering module\Quering module.csproj", "{54DE68DF-55E0-4C82-9F17-BEA21A3F4211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FCEFC69-297F-4D33-A898-CC4A971AE1DD}"
+	ProjectSection(SolutionItems) = preProject
+		Quering module\bin\Debug\Departments.xml = Quering module\bin\Debug\Departments.xml
+		Quering module\bin\Debug\Employees.xml = Quering module\bin\Debug\Employees.xml
+		Quering module\bin\Debug\product.xml = Quering module\bin\Debug\product.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
