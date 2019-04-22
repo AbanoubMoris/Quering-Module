@@ -18,3 +18,12 @@ C:\Users\hs\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\De
 C:\Users\hs\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.exe.config
 C:\Users\hs\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.exe
 C:\Users\hs\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.pdb
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.exe.config
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.exe
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\bin\Debug\Quering module.pdb
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering_module.Form1.resources
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering_module.Properties.Resources.resources
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.GenerateResource.cache
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.CoreCompileInputs.cache
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.exe
+C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.pdb

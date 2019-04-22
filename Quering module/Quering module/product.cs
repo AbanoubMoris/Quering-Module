@@ -1,28 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 
 namespace Quering_module
 {
-    [Serializable]
-    class product
+
+   // [Serializable()]
+    public class Car
     {
-        public int Id;
-        public String Name;
-        public int price;
-        public List<product> prod = new List<product>;
-           
-        public void ReadData()
+        public string StockNumber { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+    }
+
+
+  //  [Serializable()]
+    public class CarCollection
+    {
+        public List<Car> read()
         {
-            XmlSerializer xsSubmit = new XmlSerializer(prod.GetType());
-            FileStream fs = new FileStream("product.xml", FileMode.Open);
-            prod = (List<product>)xsSubmit.Deserialize(fs);
-            fs.Close();
-           
+            List<Car> cars = new List<Car>();
+
+            XmlSerializer serializer = new XmlSerializer(cars.GetType());
+
+            StreamReader reader = new StreamReader("cars.xml");
+            cars = (List<Car>)serializer.Deserialize(reader);
+            reader.Close();
+            return cars;
+
         }
+
+
     }
 }

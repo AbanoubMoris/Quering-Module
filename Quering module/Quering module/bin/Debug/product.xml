@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Table name="Products">
+<ArrayOfProduct>
   <Product>
     <Id>1</Id>
     <Name>pepsi</Name>
@@ -10,4 +10,4 @@
     <Name>chepsu</Name>
     <Price>3</Price>
   </Product>
-</Table>
+</ArrayOfProduct>
