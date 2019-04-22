@@ -52,6 +52,11 @@ namespace Quering_module
                 CarCollection pt = new CarCollection();
                 Tbl.DataSource = pt.read();
             }
+            else if (selectedItem == "Departments")
+            {
+                DepartmentsList dp = new DepartmentsList();
+                Tbl.DataSource = dp.read();
+            }
         }
         private int clicked = 0;
         private void Comparision_compobox_SelectedIndexChanged(object sender, EventArgs e)

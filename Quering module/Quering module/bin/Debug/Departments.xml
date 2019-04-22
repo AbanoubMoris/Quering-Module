@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Departments>
+<ArrayOfDepartment>
   <Department>
     <id>1</id>
     <Name>IT</Name>
@@ -12,4 +12,4 @@
     <id>3</id>
     <Name>Marketing</Name>
   </Department>
-</Departments>
+</ArrayOfDepartment>
