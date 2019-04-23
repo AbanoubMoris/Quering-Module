@@ -41,9 +41,9 @@
             this.QueryPnl = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.AndORlbl3 = new System.Windows.Forms.Label();
             this.assign_lbl3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.AndORlbl3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.assign_lbl2 = new System.Windows.Forms.Label();
@@ -53,13 +53,13 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.assign_lbl1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.AndOR_lbl1 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.Add_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.assign_lbl0 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AndOR_lbl1 = new System.Windows.Forms.Label();
             this.Comparision_compobox = new System.Windows.Forms.ComboBox();
             this.bool_Compobox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,10 +69,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ResPnl = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.TablePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,10 +79,6 @@
             this.panel1.SuspendLayout();
             this.ResPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // TablePnl
@@ -223,14 +215,13 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.comboBox10);
             this.panel5.Controls.Add(this.AndORlbl3);
             this.panel5.Controls.Add(this.assign_lbl3);
             this.panel5.Controls.Add(this.textBox4);
             this.panel5.Location = new System.Drawing.Point(247, 221);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(333, 35);
+            this.panel5.Size = new System.Drawing.Size(294, 35);
             this.panel5.TabIndex = 21;
             // 
             // comboBox10
@@ -240,15 +231,6 @@
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(121, 21);
             this.comboBox10.TabIndex = 11;
-            // 
-            // AndORlbl3
-            // 
-            this.AndORlbl3.AutoSize = true;
-            this.AndORlbl3.Location = new System.Drawing.Point(6, 11);
-            this.AndORlbl3.Name = "AndORlbl3";
-            this.AndORlbl3.Size = new System.Drawing.Size(17, 13);
-            this.AndORlbl3.TabIndex = 20;
-            this.AndORlbl3.Text = "lbl";
             // 
             // assign_lbl3
             // 
@@ -266,16 +248,24 @@
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 10;
             // 
+            // AndORlbl3
+            // 
+            this.AndORlbl3.AutoSize = true;
+            this.AndORlbl3.Location = new System.Drawing.Point(6, 11);
+            this.AndORlbl3.Name = "AndORlbl3";
+            this.AndORlbl3.Size = new System.Drawing.Size(17, 13);
+            this.AndORlbl3.TabIndex = 20;
+            this.AndORlbl3.Text = "lbl";
+            // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.comboBox9);
             this.panel4.Controls.Add(this.assign_lbl2);
             this.panel4.Controls.Add(this.textBox3);
             this.panel4.Controls.Add(this.AndORlbl2);
             this.panel4.Location = new System.Drawing.Point(247, 180);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(333, 35);
+            this.panel4.Size = new System.Drawing.Size(294, 35);
             this.panel4.TabIndex = 19;
             // 
             // comboBox9
@@ -313,14 +303,13 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.comboBox8);
             this.panel3.Controls.Add(this.assign_lbl1);
             this.panel3.Controls.Add(this.textBox2);
             this.panel3.Controls.Add(this.AndOR_lbl1);
             this.panel3.Location = new System.Drawing.Point(247, 138);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(333, 35);
+            this.panel3.Size = new System.Drawing.Size(294, 35);
             this.panel3.TabIndex = 17;
             // 
             // comboBox8
@@ -347,15 +336,6 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 10;
             // 
-            // AndOR_lbl1
-            // 
-            this.AndOR_lbl1.AutoSize = true;
-            this.AndOR_lbl1.Location = new System.Drawing.Point(6, 12);
-            this.AndOR_lbl1.Name = "AndOR_lbl1";
-            this.AndOR_lbl1.Size = new System.Drawing.Size(17, 13);
-            this.AndOR_lbl1.TabIndex = 12;
-            this.AndOR_lbl1.Text = "lbl";
-            // 
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
@@ -377,13 +357,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.comboBox6);
             this.panel1.Controls.Add(this.assign_lbl0);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(289, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(291, 35);
+            this.panel1.Size = new System.Drawing.Size(252, 35);
             this.panel1.TabIndex = 13;
             // 
             // comboBox6
@@ -409,7 +388,15 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            // 
+            // AndOR_lbl1
+            // 
+            this.AndOR_lbl1.AutoSize = true;
+            this.AndOR_lbl1.Location = new System.Drawing.Point(6, 12);
+            this.AndOR_lbl1.Name = "AndOR_lbl1";
+            this.AndOR_lbl1.Size = new System.Drawing.Size(17, 13);
+            this.AndOR_lbl1.TabIndex = 12;
+            this.AndOR_lbl1.Text = "lbl";
             // 
             // Comparision_compobox
             // 
@@ -504,42 +491,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(581, 380);
             this.dataGridView2.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(254, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 19);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(296, 8);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 19);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 23;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(296, 7);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 19);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 23;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(296, 7);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(20, 19);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 23;
-            this.pictureBox4.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,10 +519,6 @@
             this.panel1.PerformLayout();
             this.ResPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,10 +566,6 @@
         private System.Windows.Forms.Label assign_lbl3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label AndORlbl3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

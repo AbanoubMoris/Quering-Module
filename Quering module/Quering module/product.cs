@@ -30,14 +30,6 @@ namespace Quering_module
             return cars;
 
         }
-        public List<string> colNames()
-        {
-            List<string> lst = new List<string>();
-            lst.Add("StockNumber");
-            lst.Add("Make");
-            lst.Add("Model");
-            return lst;
-        }
 
 
     }

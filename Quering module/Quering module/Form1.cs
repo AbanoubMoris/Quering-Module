@@ -14,30 +14,13 @@ namespace Quering_module
     public partial class Form1 : Form
     {
 
-        private CarCollection cars;
-        private List<Car> carLst;
+
         public Form1()
         {
             InitializeComponent();
             panel3.Visible = false;
             panel4.Visible = false;
             panel5.Visible = false;
-            pictureBox1.ImageLocation = @"f.png";
-            pictureBox2.ImageLocation = @"f.png";
-            pictureBox3.ImageLocation = @"f.png";
-            pictureBox4.ImageLocation = @"f.png";
-
-            pictureBox1.ImageLocation = @"t.png";
-            pictureBox2.ImageLocation = @"t.png";
-            pictureBox3.ImageLocation = @"t.png";
-            pictureBox4.ImageLocation = @"t.png";
-        }
-        private void TrueFalseImages(string TorF)
-        {
-            pictureBox1.ImageLocation = @"f.png";
-            pictureBox2.ImageLocation = @"f.png";
-            pictureBox3.ImageLocation = @"f.png";
-            pictureBox4.ImageLocation = @"f.png";
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -66,25 +49,13 @@ namespace Quering_module
         {
             string selectedItem = comboBox1.SelectedItem.ToString();
             if (selectedItem == "cars"){
-                cars = new CarCollection();
-                carLst = cars.read();
-                Tbl.DataSource = carLst;
-                showColumnsOfCars();
+                CarCollection pt = new CarCollection();
+                Tbl.DataSource = pt.read();
             }
             else if (selectedItem == "Departments")
             {
                 DepartmentsList dp = new DepartmentsList();
                 Tbl.DataSource = dp.read();
-            }
-        }
-        private void showColumnsOfCars()
-        {
-            for (int i = 0; i < cars.colNames().Count; i++)
-            {
-                comboBox6.Items.Add(cars.colNames()[i]);
-                comboBox8.Items.Add(cars.colNames()[i]);
-                comboBox9.Items.Add(cars.colNames()[i]);
-                comboBox10.Items.Add(cars.colNames()[i]);
             }
         }
         private int clicked = 0;
@@ -184,13 +155,6 @@ namespace Quering_module
                     break;
             }
             
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-           // if (co)
-          //  if (carLst[0].StockNumber)
-            pictureBox1.ImageLocation = @"f.png";
         }
     }
 }
