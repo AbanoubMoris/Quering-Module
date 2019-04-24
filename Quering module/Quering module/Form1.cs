@@ -48,43 +48,43 @@ namespace Quering_module
                     {
                         for (int i = 0; i < carLst.Count; i++)
                         {
-                            if (booleanOperator == "And" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1)) {
-                                if(comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                            if (booleanOperator == "And" && comparison(carLst[i].getCar(FirstComboBox), textBox1.Text, comp1)) {
+                                if(comparison(carLst[i].getCar(SecondComboBox), textBox2.Text, comp2))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
-                            if (booleanOperator == "And" && comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                            if (booleanOperator == "And" && comparison(carLst[i].getCar(SecondComboBox), textBox2.Text, comp2))
                             {
-                                if (comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                                if (comparison(carLst[i].getCar(FirstComboBox), textBox1.Text, comp1))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
 
-                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(FirstComboBox), textBox1.Text, comp1))
                             {
                                 if (!result.Contains(carLst[i]))
                                     result.Add(carLst[i]);
-                                if (comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                                if (comparison(carLst[i].getCar(SecondComboBox), textBox2.Text, comp2))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
-                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(SecondComboBox), textBox2.Text, comp2))
                             {
                                 if (!result.Contains(carLst[i]))
                                     result.Add(carLst[i]);    
-                                if (comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                                if (comparison(carLst[i].getCar(FirstComboBox), textBox1.Text, comp1))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
-                            if (booleanOperator == "\"\"" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                            if (booleanOperator == "\"\"" && comparison(carLst[i].getCar(FirstComboBox), textBox1.Text, comp1))
                             {
                                 if (!result.Contains(carLst[i]))
                                     result.Add(carLst[i]);
@@ -108,19 +108,19 @@ namespace Quering_module
                 {
                     for(int i=0; i<deplist.Count; i++) // loops the objects in file
                     {
-                        if (booleanOperator == "And" && comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1) && comparison(deplist[i].getDepartment(secondValue), textBox1.Text, comparison2))
+                        if (booleanOperator == "And" && comparison(deplist[i].getDepartment(firstValue), textBox1.Text, comparison1) && comparison(deplist[i].getDepartment(secondValue), textBox2.Text, comparison2))
                         {
                                 if (!result.Contains(deplist[i]))
                                     result.Add(deplist[i]);
                         }
 
-                        else if (booleanOperator == "OR" && (comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1) || comparison(deplist[i].getDepartment(secondValue), textBox1.Text, comparison2)) )
+                        else if (booleanOperator == "OR" && (comparison(deplist[i].getDepartment(firstValue), textBox1.Text, comparison1) || comparison(deplist[i].getDepartment(secondValue), textBox2.Text, comparison2)) )
                         {
                             if (!result.Contains(deplist[i]))
                                 result.Add(deplist[i]);
                         }
 
-                        else if (booleanOperator == "\"\"" && comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1))
+                        else if (booleanOperator == "\"\"" && comparison(deplist[i].getDepartment(firstValue), textBox1.Text, comparison1))
                         {
                             if (!result.Contains(deplist[i]))
                                 result.Add(deplist[i]);
@@ -180,18 +180,63 @@ namespace Quering_module
                     label9.Text = ("Variance: " + result);
                 }
             }
+            else if(type == "cars")
+            {
+                if (Aggregate_combobox.Text == "Sum")
+                {
+                    int result = 0;
+                    for (int i = 0; i < carLst.Count; i++)
+                    {
+                        result += int.Parse(carLst[i].getCar(value));
+                    }
+                    label9.Text = ("Sum: " + result);
+                }
+                else if (Aggregate_combobox.Text == "Avg")
+                {
+                    double result = 0;
+                    for (int i = 0; i < carLst.Count; i++)
+                    {
+                        result += double.Parse(carLst[i].getCar(value));
+                    }
+                    result /= carLst.Count;
+                    result = Math.Round(result, 3);
+                    label9.Text = ("Average: " + result);
+                }
+                else if (Aggregate_combobox.Text == "Count")
+                {
+                    label9.Text = ("Count: " + carLst.Count);
+                }
+                else if (Aggregate_combobox.Text == "Var")
+                {
+                    double result;
+                    double mean = 0;
+                    for (int i = 0; i < carLst.Count; i++)
+                    {
+                        mean += double.Parse(carLst[i].getCar(value));
+                    }
+                    mean /= carLst.Count;
+                    mean = Math.Round(mean, 3);
+                    double upper = 0;
+                    for (int i = 0; i < carLst.Count; i++)
+                    {
+                        upper += Math.Pow(double.Parse(carLst[i].getCar(value)) - mean, 2);
+                    }
+                    result = upper / (carLst.Count - 1);
+                    result = Math.Round(result, 3);
+                    label9.Text = ("Variance: " + result);
+                }
+            }
         }
 
         public Form1()
         {
             InitializeComponent();
             panel3.AutoScroll = true;
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
 
         }
-        private void TrueFalseImages(string TorF)
-        {
-           
-        }
+      
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -236,8 +281,8 @@ namespace Quering_module
                 cars.read();
                 carLst = cars.read();
                 Tbl.DataSource = carLst;
-                
                 showColumns("Cars");
+                
             }
             else if (selectedItem == "Departments")
             {
@@ -326,18 +371,7 @@ namespace Quering_module
             return x[x.Length - 1];
 
         }
-        protected void textBox_TextChanged(object sender, EventArgs e)
-        {
-            
-           // MessageBox.Show(TextTyped(sender.ToString()));
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            // if (co)
-            //  if (carLst[0].StockNumber)
-
-        }
+       
 
         private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -372,13 +406,13 @@ namespace Quering_module
             Comparision_compobox.Text = "";
             comboBox8.Text = "";
             assign_lbl1.Text = "lbl";
-            textBox2.Text = "";
+            textBox1.Text = "";
             bool_Compobox.Text = "";
             comboBox3.Text = "";
             label8.Text = "\"\"";
             comboBox2.Text = "";
             label3.Text = "lbl";
-            textBox1.Text = "";
+            textBox2.Text = "";
             Aggregate_combobox.Text = "";
             comboBox7.Text = "";
             label9.Text = "";
@@ -399,6 +433,17 @@ namespace Quering_module
         {
             if(comboBox1.Text!="" && comboBox7.Text!="")
                AggregationTable(comboBox1.Text, comboBox7.Text);
+        }
+
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
+        {
+           
+                //MessageBox.Show(TextTyped(sender.ToString()));
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(TextTyped(sender.ToString()));
         }
     }
 }
