@@ -14,13 +14,86 @@ namespace Quering_module
     public partial class Form1 : Form
     {
 
+        private CarCollection cars;
 
+        private List<Car> carLst;
+       // lst.Add("StockNumber");
+         //   lst.Add("Make");
+           // lst.Add("Model");
+        public List<Car> oo(string comparison)
+        {
+            List<Car> lst = new List<Car>();
+
+            
+            if (queryPnl.Count>0)
+            {
+                for (int j = 0; j < queryPnl.Count; j++)
+                {
+                    if (comparison == "=")
+                    {
+                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].StockNumber == queryPnl[j].getTextBox().Text)
+                                {
+                                    lst.Add(carLst[i]);
+                                }
+                            }
+                        }
+                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[1])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].Make == queryPnl[j].getTextBox().Text)
+                                {
+                                    lst.Add(carLst[i]);
+                                }
+                            }
+                        }
+                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[2])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].Model == queryPnl[j].getTextBox().Text)
+                                {
+                                    lst.Add(carLst[i]);
+                                }
+                            }
+                        }
+                    }
+                    else if (comparison == ">")
+                    {
+                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if ( int.Parse(carLst[i].StockNumber) > int.Parse(queryPnl[j].getTextBox().Text))
+                                {
+                                    lst.Add(carLst[i]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return lst;
+        }
+
+
+        private List<typesOfquery> queryPnl;
         public Form1()
         {
             InitializeComponent();
-            panel3.Visible = false;
-            panel4.Visible = false;
-            panel5.Visible = false;
+            panel3.AutoScroll = true;
+            queryPnl = new List<typesOfquery>();
+            queryPnl.Add(new typesOfquery());
+            panel3.Controls.Add(queryPnl[0]);
+
+        }
+        private void TrueFalseImages(string TorF)
+        {
+           
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -28,7 +101,7 @@ namespace Quering_module
             TablePnl.Visible = true;
             ResPnl.Visible = false;
             QueryPnl.Visible = false;
-            
+
 
         }
         private void Button2_Click(object sender, EventArgs e)
@@ -44,13 +117,18 @@ namespace Quering_module
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
         }
-
+        string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedItem = comboBox1.SelectedItem.ToString();
-            if (selectedItem == "cars"){
-                CarCollection pt = new CarCollection();
-                Tbl.DataSource = pt.read();
+            selectedItem = comboBox1.SelectedItem.ToString();
+            if (selectedItem == "cars")
+            {
+                cars = new CarCollection();
+                cars.read();
+                carLst = cars.read();
+                Tbl.DataSource = carLst;
+                
+                showColumnsOfCars();
             }
             else if (selectedItem == "Departments")
             {
@@ -58,103 +136,98 @@ namespace Quering_module
                 Tbl.DataSource = dp.read();
             }
         }
+        private void showColumnsOfCars()
+        {
+            for (int i = 0; i < cars.colNames().Count; i++)
+            {
+                queryPnl[0].getComboBox().Items.Add(cars.colNames()[i]);
+                
+
+            }
+            
+        }
         private int clicked = 0;
+        List<string> comp = new List<string>();
         private void Comparision_compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = Comparision_compobox.SelectedIndex;
+            
             switch (selectedIndex)
             {
                 case 0:
-                    if (clicked==0)
-                        assign_lbl0.Text = ">";
-                    if (clicked == 1)
-                        assign_lbl1.Text = ">";
-                    if (clicked == 2)
-                        assign_lbl2.Text = ">";
-                    if (clicked == 3)
-                        assign_lbl3.Text = ">";
+                    queryPnl[panel3.Controls.Count - 1].setComparison(">");
+                    comp.Add(">");
+                    resultGrid.DataSource = oo(">");
                     break;
                 case 1:
-                    if (clicked == 0)
-                        assign_lbl0.Text = "<";
-                    if (clicked == 1)
-                        assign_lbl1.Text = "<";
-                    if (clicked == 2)
-                        assign_lbl2.Text = "<";
-                    if (clicked == 3)
-                        assign_lbl3.Text = "<";
+                    queryPnl[panel3.Controls.Count - 1].setComparison("<");
                     break;
                 case 2:
-                    if (clicked == 0)
-                        assign_lbl0.Text = "=";
-                    if (clicked == 1)
-                        assign_lbl1.Text = "=";
-                    if (clicked == 2)
-                        assign_lbl2.Text = "=";
-                    if (clicked == 3)
-                        assign_lbl3.Text = "=";
+                    queryPnl[panel3.Controls.Count - 1].setComparison("=");
+                    resultGrid.DataSource = oo("=");
                     break;
                 case 3:
-                    if (clicked == 0)
-                        assign_lbl0.Text = "!=";
-                    if (clicked == 1)
-                        assign_lbl1.Text = "!=";
-                    if (clicked == 2)
-                        assign_lbl2.Text = "!=";
-                    if (clicked == 3)
-                        assign_lbl3.Text = "!=";
+                    queryPnl[panel3.Controls.Count - 1].setComparison("!=");
                     break;
 
                 default:
                     break;
             }
+       
+    }
+
+        private void GetselectedTable(string s)
+        {
+            if (s == "cars")
+            {
+                queryPnl[queryPnl.Count - 1].setcolumnsNames(cars.colNames());
+            }
         }
-        
         private void Bool_Compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clicked++;
             int selectedIndex = bool_Compobox.SelectedIndex;
             switch (selectedIndex)
             {
-                case 0:
-                    if (clicked == 1)
-                    {
-                        AndOR_lbl1.Text = "And";
-                        panel3.Visible = true;
-                    }
-                    else if (clicked == 2)
-                    {
-                        AndORlbl2.Text = "And";
-                        panel4.Visible = true;
-                    }
-                    else if (clicked == 3)
-                    {
-                        AndORlbl3.Text = "And";
-                        panel5.Visible = true;
-                    }
-                    break;
-                case 1:
-                    if (clicked == 1)
-                    {
-                        AndOR_lbl1.Text = "Or";
-                        panel3.Visible = true;
+                case 0: //And
+                    queryPnl.Add(new typesOfquery());
+                    queryPnl[queryPnl.Count - 1].setAndOR("And");
+                    GetselectedTable(selectedItem);
 
-                    }
-                    if (clicked == 2)
-                    {
-                        AndORlbl2.Text = "Or";
-                        panel4.Visible = true;
-                    }
-                    if (clicked == 3)
-                    {
-                        AndORlbl3.Text = "Or";
-                        panel5.Visible = true;
-                    }
+                        break;
+                case 1: //Or
+                    queryPnl.Add(new typesOfquery());
+                    queryPnl[queryPnl.Count - 1].setAndOR("OR");
+                    GetselectedTable(selectedItem);
                     break;
                 default:
                     break;
             }
+            AddqueryPnlToForm();
+        }
+        private void AddqueryPnlToForm()
+        {
+            queryPnl[queryPnl.Count - 1].Location = new Point(0, (panel3.Controls.Count * queryPnl[0].Height));
+            queryPnl[queryPnl.Count - 1].getTextBox().TextChanged += new EventHandler(textBox_TextChanged);
             
+            panel3.Controls.Add(queryPnl[queryPnl.Count - 1]);
+        }
+        private string TextTyped(string s)
+        {
+            string[] x = s.Split(':');
+            return x[x.Length - 1];
+
+        }
+        protected void textBox_TextChanged(object sender, EventArgs e)
+        {
+            
+           // MessageBox.Show(TextTyped(sender.ToString()));
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            // if (co)
+            //  if (carLst[0].StockNumber)
+
         }
     }
 }
