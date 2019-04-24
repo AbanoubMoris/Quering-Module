@@ -3,13 +3,16 @@
   <Department>
     <id>1</id>
     <Name>IT</Name>
+    <NumOfEmployees>20</NumOfEmployees>
   </Department>
   <Department>
     <id>2</id>
     <Name>Sales</Name>
+    <NumOfEmployees>30</NumOfEmployees>
   </Department>
   <Department>
     <id>3</id>
     <Name>Marketing</Name>
+    <NumOfEmployees>50</NumOfEmployees>
   </Department>
 </ArrayOfDepartment>

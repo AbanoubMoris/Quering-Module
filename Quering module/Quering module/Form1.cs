@@ -20,6 +20,9 @@ namespace Quering_module
 
         //List<Car> result = new List<Car>();
 
+        private DepartmentsList deps;
+        private List<Department> deplist;
+
         public bool comparison(string A , string B , string comp)
         {
 
@@ -33,6 +36,7 @@ namespace Quering_module
                 }catch (Exception){}
             return false;
         }
+
         public List<Car> carTablel(string comp1, string comp2, string FirstComboBox , string SecondComboBox, string booleanOperator)
         {
             List<Car> result = new List<Car>();
@@ -80,7 +84,7 @@ namespace Quering_module
                                         result.Add(carLst[i]);
                                 }
                             }
-                            if (booleanOperator == "" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                            if (booleanOperator == "\"\"" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
                             {
                                 if (!result.Contains(carLst[i]))
                                     result.Add(carLst[i]);
@@ -94,8 +98,89 @@ namespace Quering_module
             return result;
         }
 
+        public List<Department> DepartmentTable(string comparison1 , string comparison2 , string firstValue , string secondValue , string booleanOperator)
+        {
+            List<Department> result = new List<Department>();
 
-       
+            for(int j=0; j<deps.colNames().Count; j++) // loops the columns of department
+            {
+                if(firstValue == deps.colNames()[j])
+                {
+                    for(int i=0; i<deplist.Count; i++) // loops the objects in file
+                    {
+                        if (booleanOperator == "And" && comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1) && comparison(deplist[i].getDepartment(secondValue), textBox1.Text, comparison2))
+                        {
+                                if (!result.Contains(deplist[i]))
+                                    result.Add(deplist[i]);
+                        }
+
+                        else if (booleanOperator == "OR" && (comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1) || comparison(deplist[i].getDepartment(secondValue), textBox1.Text, comparison2)) )
+                        {
+                            if (!result.Contains(deplist[i]))
+                                result.Add(deplist[i]);
+                        }
+
+                        else if (booleanOperator == "\"\"" && comparison(deplist[i].getDepartment(firstValue), textBox2.Text, comparison1))
+                        {
+                            if (!result.Contains(deplist[i]))
+                                result.Add(deplist[i]);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public void AggregationTable(string type , string value)
+        {
+            if (type == "Departments")
+            {
+                if (Aggregate_combobox.Text == "Sum")
+                {
+                    int result = 0;
+                    for(int i=0; i<deplist.Count; i++)
+                    {
+                        result += int.Parse(deplist[i].getDepartment(value));
+                    }
+                    label9.Text = ("Sum: " + result);
+                }
+                else if(Aggregate_combobox.Text == "Avg")
+                {
+                    double result = 0;
+                    for (int i = 0; i < deplist.Count; i++)
+                    {
+                        result += double.Parse(deplist[i].getDepartment(value));
+                    }
+                    result /= deplist.Count;
+                    result = Math.Round(result,3);
+                    label9.Text = ("Average: " + result);
+                }
+                else if(Aggregate_combobox.Text == "Count")
+                {
+                    label9.Text = ("Count: " + deplist.Count);
+                }
+                else if(Aggregate_combobox.Text == "Var")
+                {
+                    double result;
+                    double mean = 0;
+                    for (int i = 0; i < deplist.Count; i++)
+                    {
+                        mean += double.Parse(deplist[i].getDepartment(value));
+                    }
+                    mean /= deplist.Count;
+                    mean = Math.Round(mean, 3);
+                    double upper = 0;
+                    for(int i=0; i<deplist.Count; i++)
+                    {
+                        upper += Math.Pow(double.Parse(deplist[i].getDepartment(value)) - mean,2);
+                    }
+                    result = upper / (deplist.Count - 1);
+                    result = Math.Round(result, 3);
+                    label9.Text = ("Variance: " + result);
+                }
+            }
+        }
 
         public Form1()
         {
@@ -121,6 +206,7 @@ namespace Quering_module
             TablePnl.Visible = false;
             ResPnl.Visible = false;
             QueryPnl.Visible = true;
+            resultGrid.DataSource = null;
         }
 
         private void Button3_Click(object sender, EventArgs e) //if click result
@@ -128,7 +214,17 @@ namespace Quering_module
             TablePnl.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
-            resultGrid.DataSource = carTablel(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+            try
+            {
+                if (comboBox1.SelectedItem.Equals("cars"))
+                    resultGrid.DataSource = carTablel(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+                else if (comboBox1.SelectedItem.Equals("Departments"))
+                    resultGrid.DataSource = DepartmentTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Please Select A Table First");
+            }
+
         }
         string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,22 +237,43 @@ namespace Quering_module
                 carLst = cars.read();
                 Tbl.DataSource = carLst;
                 
-                showColumnsOfCars();
+                showColumns("Cars");
             }
             else if (selectedItem == "Departments")
             {
-                DepartmentsList dp = new DepartmentsList();
-                Tbl.DataSource = dp.read();
+                deps = new DepartmentsList();
+                deplist =  deps.read();
+                Tbl.DataSource = deplist;
+                showColumns("Departments");
             }
         }
-        private void showColumnsOfCars() //add columns names to each comboBox
+        private void showColumns(string type) //add columns names to each comboBox
         {
-            for (int i = 0; i < cars.colNames().Count; i++)
+            if (type == "Cars")
             {
-                comboBox8.Items.Add(cars.colNames()[i]);
-                comboBox2.Items.Add(cars.colNames()[i]);
+                for (int i = 0; i < cars.colNames().Count; i++)
+                {
+                    if (!comboBox8.Items.Contains(cars.colNames()[i]))
+                        comboBox8.Items.Add(cars.colNames()[i]);
+                    if (!comboBox2.Items.Contains(cars.colNames()[i]))
+                        comboBox2.Items.Add(cars.colNames()[i]);
+                }
+                if (!comboBox7.Items.Contains(cars.colNames()[0]))
+                    comboBox7.Items.Add(cars.colNames()[0]); //aggregation functions stock Number
             }
-            comboBox7.Items.Add(cars.colNames()[0]); //aggregation functions stock Number
+
+            else if(type == "Departments")
+            {
+                for(int i=0; i<deps.colNames().Count; i++)
+                {
+                    if (!comboBox8.Items.Contains(deps.colNames()[i]))
+                        comboBox8.Items.Add(deps.colNames()[i]);
+                    if (!comboBox2.Items.Contains(deps.colNames()[i]))
+                        comboBox2.Items.Add(deps.colNames()[i]);
+                }
+                if (!comboBox7.Items.Contains(deps.colNames()[2]))
+                    comboBox7.Items.Add(deps.colNames()[2]); //aggregation functions for NumOfEmployees
+            }
         }
         
         private void Comparision_compobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,6 +365,40 @@ namespace Quering_module
                 default:
                     break;
             }
+        }
+
+        private void clear()
+        {
+            Comparision_compobox.Text = "";
+            comboBox8.Text = "";
+            assign_lbl1.Text = "lbl";
+            textBox2.Text = "";
+            bool_Compobox.Text = "";
+            comboBox3.Text = "";
+            label8.Text = "\"\"";
+            comboBox2.Text = "";
+            label3.Text = "lbl";
+            textBox1.Text = "";
+            Aggregate_combobox.Text = "";
+            comboBox7.Text = "";
+            label9.Text = "";
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && comboBox7.Text != "")
+                AggregationTable(comboBox1.Text, comboBox7.Text);
+        }
+
+        private void Aggregate_combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.Text!="" && comboBox7.Text!="")
+               AggregationTable(comboBox1.Text, comboBox7.Text);
         }
     }
 }
