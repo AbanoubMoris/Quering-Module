@@ -17,14 +17,11 @@ namespace Quering_module
         private CarCollection cars;
 
         private List<Car> carLst;
-       // lst.Add("StockNumber");
-         //   lst.Add("Make");
-           // lst.Add("Model");
-        public List<Car> oo(string comparison)
-        {
-            List<Car> lst = new List<Car>();
 
-            
+        List<Car> result = new List<Car>();
+        public void oo(string comparison)
+        {
+          
             if (queryPnl.Count>0)
             {
                 for (int j = 0; j < queryPnl.Count; j++)
@@ -37,7 +34,8 @@ namespace Quering_module
                             {
                                 if (carLst[i].StockNumber == queryPnl[j].getTextBox().Text)
                                 {
-                                    lst.Add(carLst[i]);
+                                    if(!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
                                 }
                             }
                         }
@@ -47,7 +45,8 @@ namespace Quering_module
                             {
                                 if (carLst[i].Make == queryPnl[j].getTextBox().Text)
                                 {
-                                    lst.Add(carLst[i]);
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
                                 }
                             }
                         }
@@ -57,7 +56,8 @@ namespace Quering_module
                             {
                                 if (carLst[i].Model == queryPnl[j].getTextBox().Text)
                                 {
-                                    lst.Add(carLst[i]);
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
                                 }
                             }
                         }
@@ -70,14 +70,14 @@ namespace Quering_module
                             {
                                 if ( int.Parse(carLst[i].StockNumber) > int.Parse(queryPnl[j].getTextBox().Text))
                                 {
-                                    lst.Add(carLst[i]);
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
                                 }
                             }
                         }
                     }
                 }
             }
-            return lst;
         }
 
 
@@ -156,15 +156,17 @@ namespace Quering_module
             {
                 case 0:
                     queryPnl[panel3.Controls.Count - 1].setComparison(">");
-                    comp.Add(">");
-                    resultGrid.DataSource = oo(">");
+                    //comp.Add(">");
+                    oo(">");
+                    resultGrid.DataSource = result;
                     break;
                 case 1:
                     queryPnl[panel3.Controls.Count - 1].setComparison("<");
                     break;
                 case 2:
                     queryPnl[panel3.Controls.Count - 1].setComparison("=");
-                    resultGrid.DataSource = oo("=");
+                    oo("=");
+                    resultGrid.DataSource = result;
                     break;
                 case 3:
                     queryPnl[panel3.Controls.Count - 1].setComparison("!=");

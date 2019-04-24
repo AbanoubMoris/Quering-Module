@@ -302,7 +302,7 @@
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(244, 103);
+            this.panel3.Location = new System.Drawing.Point(247, 92);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(341, 183);
             this.panel3.TabIndex = 23;
@@ -313,9 +313,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.QueryPnl);
             this.Controls.Add(this.TablePnl);
             this.Controls.Add(this.ResPnl);
-            this.Controls.Add(this.QueryPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
