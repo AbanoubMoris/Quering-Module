@@ -39,8 +39,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.QueryPnl = new System.Windows.Forms.Panel();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.assign_lbl1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.Add_btn = new System.Windows.Forms.Button();
             this.Comparision_compobox = new System.Windows.Forms.ComboBox();
             this.bool_Compobox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,11 +61,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ResPnl = new System.Windows.Forms.Panel();
             this.resultGrid = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.TablePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl)).BeginInit();
             this.panel2.SuspendLayout();
             this.QueryPnl.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ResPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             this.SuspendLayout();
@@ -173,9 +187,10 @@
             // 
             // QueryPnl
             // 
+            this.QueryPnl.Controls.Add(this.comboBox3);
+            this.QueryPnl.Controls.Add(this.panel1);
             this.QueryPnl.Controls.Add(this.panel3);
             this.QueryPnl.Controls.Add(this.comboBox7);
-            this.QueryPnl.Controls.Add(this.Add_btn);
             this.QueryPnl.Controls.Add(this.Comparision_compobox);
             this.QueryPnl.Controls.Add(this.bool_Compobox);
             this.QueryPnl.Controls.Add(this.label7);
@@ -188,6 +203,119 @@
             this.QueryPnl.Size = new System.Drawing.Size(594, 435);
             this.QueryPnl.TabIndex = 4;
             // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.IntegralHeight = false;
+            this.comboBox3.Items.AddRange(new object[] {
+            ">",
+            "<",
+            "=",
+            "!="});
+            this.comboBox3.Location = new System.Drawing.Point(156, 142);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(39, 21);
+            this.comboBox3.TabIndex = 21;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Location = new System.Drawing.Point(250, 135);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(333, 35);
+            this.panel1.TabIndex = 20;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(296, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 19);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(48, 7);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(173, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "lbl";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(192, 7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(17, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "lbl";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.comboBox8);
+            this.panel3.Controls.Add(this.assign_lbl1);
+            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Location = new System.Drawing.Point(250, 97);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(333, 35);
+            this.panel3.TabIndex = 19;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(296, 8);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 19);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(48, 7);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(121, 21);
+            this.comboBox8.TabIndex = 11;
+            // 
+            // assign_lbl1
+            // 
+            this.assign_lbl1.AutoSize = true;
+            this.assign_lbl1.Location = new System.Drawing.Point(173, 11);
+            this.assign_lbl1.Name = "assign_lbl1";
+            this.assign_lbl1.Size = new System.Drawing.Size(17, 13);
+            this.assign_lbl1.TabIndex = 9;
+            this.assign_lbl1.Text = "lbl";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(192, 7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 10;
+            // 
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
@@ -195,17 +323,6 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(121, 21);
             this.comboBox7.TabIndex = 11;
-            // 
-            // Add_btn
-            // 
-            this.Add_btn.FlatAppearance.BorderSize = 0;
-            this.Add_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Add_btn.Location = new System.Drawing.Point(234, 336);
-            this.Add_btn.Name = "Add_btn";
-            this.Add_btn.Size = new System.Drawing.Size(40, 27);
-            this.Add_btn.TabIndex = 16;
-            this.Add_btn.Text = "And";
-            this.Add_btn.UseVisualStyleBackColor = true;
             // 
             // Comparision_compobox
             // 
@@ -216,7 +333,7 @@
             "<",
             "=",
             "!="});
-            this.Comparision_compobox.Location = new System.Drawing.Point(131, 103);
+            this.Comparision_compobox.Location = new System.Drawing.Point(107, 103);
             this.Comparision_compobox.Name = "Comparision_compobox";
             this.Comparision_compobox.Size = new System.Drawing.Size(88, 21);
             this.Comparision_compobox.TabIndex = 8;
@@ -228,16 +345,16 @@
             this.bool_Compobox.Items.AddRange(new object[] {
             "And ",
             "OR"});
-            this.bool_Compobox.Location = new System.Drawing.Point(131, 137);
+            this.bool_Compobox.Location = new System.Drawing.Point(107, 142);
             this.bool_Compobox.Name = "bool_Compobox";
-            this.bool_Compobox.Size = new System.Drawing.Size(88, 21);
+            this.bool_Compobox.Size = new System.Drawing.Size(43, 21);
             this.bool_Compobox.TabIndex = 6;
             this.bool_Compobox.SelectedIndexChanged += new System.EventHandler(this.Bool_Compobox_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 141);
+            this.label7.Location = new System.Drawing.Point(7, 146);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
             this.label7.TabIndex = 5;
@@ -300,13 +417,6 @@
             this.resultGrid.Size = new System.Drawing.Size(581, 380);
             this.resultGrid.TabIndex = 0;
             // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(247, 92);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 183);
-            this.panel3.TabIndex = 23;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +435,12 @@
             this.panel2.ResumeLayout(false);
             this.QueryPnl.ResumeLayout(false);
             this.QueryPnl.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             this.ResumeLayout(false);
@@ -351,11 +467,21 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.Button Add_btn;
         private System.Windows.Forms.ComboBox Comparision_compobox;
         private System.Windows.Forms.Panel ResPnl;
         private System.Windows.Forms.DataGridView resultGrid;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.Label assign_lbl1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
 

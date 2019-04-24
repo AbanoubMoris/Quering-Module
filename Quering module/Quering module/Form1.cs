@@ -18,107 +18,101 @@ namespace Quering_module
 
         private List<Car> carLst;
 
-        List<Car> result = new List<Car>();
-        public void oo(string comparison)
+        //List<Car> result = new List<Car>();
+
+
+        public List<Car> oo(string comp1 , string comp2 , string booleanOperator)
         {
-          
-            if (queryPnl.Count>0)
+            List<Car> result = new List<Car>();
             {
-                for (int j = 0; j < queryPnl.Count; j++)
+                if (comp1 == "=")
                 {
-                    if (comparison == "=")
+                    for (int j = 0; j < cars.colNames().Count; j++)
                     {
-                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
                         {
                             for (int i = 0; i < carLst.Count; i++)
                             {
-                                if (carLst[i].StockNumber == queryPnl[j].getTextBox().Text)
+                                if (carLst[i].StockNumber == textBox2.Text)
                                 {
-                                    if(!result.Contains(carLst[i]))
+                                    if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
+                                    
                                 }
-                            }
-                        }
-                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[1])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].Make == queryPnl[j].getTextBox().Text)
+                                else if (carLst[i].Model == textBox2.Text)
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
-                            }
-                        }
-                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[2])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].Model == queryPnl[j].getTextBox().Text)
+                                else if (carLst[i].Make == textBox2.Text)
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
+
                             }
                         }
+
+
                     }
-                    else if (comparison == ">")
+                }
+                else if (comp1 == "!=")
+                {
+                    for (int j = 0; j < cars.colNames().Count; j++)
                     {
-                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
                         {
                             for (int i = 0; i < carLst.Count; i++)
                             {
-                                if ( int.Parse(carLst[i].StockNumber) > int.Parse(queryPnl[j].getTextBox().Text))
+                                if (carLst[i].StockNumber != textBox2.Text)
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
+                                else if (carLst[i].Model != textBox2.Text)
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                                else if (carLst[i].Make != textBox2.Text)
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+
                             }
                         }
+
+
                     }
-                    else if (comparison == "<")
+                }
+                else if (comp1 == ">")
+                {
+                    for (int j = 0; j < cars.colNames().Count; j++)
                     {
-                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
                         {
                             for (int i = 0; i < carLst.Count; i++)
                             {
-                                if (int.Parse(carLst[i].StockNumber) < int.Parse(queryPnl[j].getTextBox().Text))
+                                if (int.Parse(carLst[i].StockNumber) > int.Parse(textBox2.Text))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
                         }
+
                     }
-                    else if (comparison == "!=")
+                }
+                else if (comp1 == "<")
+                {
+                    for (int j = 0; j < cars.colNames().Count; j++)
                     {
-                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
                         {
                             for (int i = 0; i < carLst.Count; i++)
                             {
-                                if (carLst[i].StockNumber != queryPnl[j].getTextBox().Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-                            }
-                        }
-                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[1])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].Make != queryPnl[j].getTextBox().Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-                            }
-                        }
-                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[2])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].Model != queryPnl[j].getTextBox().Text)
+                                if (int.Parse(carLst[i].StockNumber) < int.Parse(textBox2.Text))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
@@ -128,17 +122,16 @@ namespace Quering_module
                     }
                 }
             }
+            return result;
         }
 
 
-        private List<typesOfquery> queryPnl;
+       
+
         public Form1()
         {
             InitializeComponent();
             panel3.AutoScroll = true;
-            queryPnl = new List<typesOfquery>();
-            queryPnl.Add(new typesOfquery());
-            panel3.Controls.Add(queryPnl[0]);
 
         }
         private void TrueFalseImages(string TorF)
@@ -161,11 +154,12 @@ namespace Quering_module
             QueryPnl.Visible = true;
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e) //if click result
         {
             TablePnl.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
+            resultGrid.DataSource = oo(assign_lbl1.Text, label3.Text, "");
         }
         string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -186,18 +180,16 @@ namespace Quering_module
                 Tbl.DataSource = dp.read();
             }
         }
-        private void showColumnsOfCars()
+        private void showColumnsOfCars() //add columns names to each comboBox
         {
             for (int i = 0; i < cars.colNames().Count; i++)
             {
-                queryPnl[0].getComboBox().Items.Add(cars.colNames()[i]);
-                
-
+                comboBox8.Items.Add(cars.colNames()[i]);
+                comboBox2.Items.Add(cars.colNames()[i]);
             }
-            
+            comboBox7.Items.Add(cars.colNames()[0]); //aggregation functions stock Number
         }
-        private int clicked = 0;
-        List<string> comp = new List<string>();
+        
         private void Comparision_compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = Comparision_compobox.SelectedIndex;
@@ -205,25 +197,20 @@ namespace Quering_module
             switch (selectedIndex)
             {
                 case 0:
-                    queryPnl[panel3.Controls.Count - 1].setComparison(">");
-                    //comp.Add(">");
-                    oo(">");
-                    resultGrid.DataSource = result;
+                    assign_lbl1.Text=">";
+                    //resultGrid.DataSource = result;
                     break;
                 case 1:
-                    queryPnl[panel3.Controls.Count - 1].setComparison("<");
-                    oo("<");
-                    resultGrid.DataSource = result;
+                    assign_lbl1.Text = "<";
+                    //resultGrid.DataSource = result;
                     break;
                 case 2:
-                    queryPnl[panel3.Controls.Count - 1].setComparison("=");
-                    oo("=");
-                    resultGrid.DataSource = result;
+                    assign_lbl1.Text = "=";
+                    //resultGrid.DataSource = result;
                     break;
                 case 3:
-                    queryPnl[panel3.Controls.Count - 1].setComparison("!=");
-                    oo("!=");
-                    resultGrid.DataSource = result;
+                    assign_lbl1.Text = "!=";
+                    //resultGrid.DataSource = result;
                     break;
 
                 default:
@@ -231,41 +218,21 @@ namespace Quering_module
             }
        
     }
-
-        private void GetselectedTable(string s)
-        {
-            if (s == "cars")
-            {
-                queryPnl[queryPnl.Count - 1].setcolumnsNames(cars.colNames());
-            }
-        }
+        
         private void Bool_Compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = bool_Compobox.SelectedIndex;
             switch (selectedIndex)
             {
                 case 0: //And
-                    queryPnl.Add(new typesOfquery());
-                    queryPnl[queryPnl.Count - 1].setAndOR("And");
-                    GetselectedTable(selectedItem);
-
+                    label8.Text = "And";
                         break;
                 case 1: //Or
-                    queryPnl.Add(new typesOfquery());
-                    queryPnl[queryPnl.Count - 1].setAndOR("OR");
-                    GetselectedTable(selectedItem);
+                    label8.Text = "OR";
                     break;
                 default:
                     break;
             }
-            AddqueryPnlToForm();
-        }
-        private void AddqueryPnlToForm()
-        {
-            queryPnl[queryPnl.Count - 1].Location = new Point(0, (panel3.Controls.Count * queryPnl[0].Height));
-            queryPnl[queryPnl.Count - 1].getTextBox().TextChanged += new EventHandler(textBox_TextChanged);
-            
-            panel3.Controls.Add(queryPnl[queryPnl.Count - 1]);
         }
         private string TextTyped(string s)
         {
@@ -284,6 +251,34 @@ namespace Quering_module
             // if (co)
             //  if (carLst[0].StockNumber)
 
+        }
+
+        private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = comboBox3.SelectedIndex;
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    label3.Text = ">";
+                   // resultGrid.DataSource = result;
+                    break;
+                case 1:
+                    label3.Text = "<";
+                   // resultGrid.DataSource = result;
+                    break;
+                case 2:
+                    label3.Text = "=";
+                    //resultGrid.DataSource = result;
+                    break;
+                case 3:
+                    label3.Text = "!=";
+                    //resultGrid.DataSource = result;
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

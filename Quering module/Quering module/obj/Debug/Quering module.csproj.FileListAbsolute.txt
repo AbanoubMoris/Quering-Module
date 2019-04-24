@@ -38,4 +38,3 @@ C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\
 C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.exe
 C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.pdb
 C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.csprojAssemblyReference.cache
-C:\Users\lap shop\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering_module.typesOfquery.resources
