@@ -552,13 +552,37 @@ namespace Quering_module
 
         private void textBox2_TextChanged_1(object sender, EventArgs e)
         {
-           
-                //MessageBox.Show(TextTyped(sender.ToString()));
+
+            if (comboBox1.Text == "cars")
+            {
+                for (int i = 0; i < carLst.Count; i++)
+                {
+                    if (carLst[i].getCar(comboBox8.Text) == textBox2.Text)
+                    {
+                        pictureBox2.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else pictureBox2.ImageLocation = @"f.png";
+
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show(TextTyped(sender.ToString()));
+            if (comboBox1.Text == "cars")
+            {
+                for (int i = 0; i < carLst.Count; i++)
+                {
+                    if (carLst[i].getCar(comboBox8.Text) == textBox1.Text)
+                    {
+                        pictureBox1.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else pictureBox1.ImageLocation = @"f.png";
+
+                }
+            }
         }
     }
 }
