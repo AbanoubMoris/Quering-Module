@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Employees>
 <ArrayOfEmployees>
   <Employee>
     <id>1</id>
@@ -37,4 +36,3 @@
     <DepartmentId>3</DepartmentId>
   </Employee>
 </ArrayOfEmployees>
-</Employees>

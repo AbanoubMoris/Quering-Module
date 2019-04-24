@@ -23,6 +23,10 @@ namespace Quering_module
         private DepartmentsList deps;
         private List<Department> deplist;
 
+
+        private EmployeesList emps;
+        private List<Employee> empList;
+
         public bool comparison(string A , string B , string comp)
         {
 
@@ -132,6 +136,47 @@ namespace Quering_module
             return result;
         }
 
+
+
+
+        public List<Employee> EmployeesTable(string comparison1, string comparison2, string firstValue, string secondValue, string booleanOperator)
+        {
+            List<Employee> result = new List<Employee>();
+
+            for (int j = 0; j < emps.colNames().Count; j++) // loops the columns of department
+            {
+                if (firstValue == emps.colNames()[j])
+                {
+                    for (int i = 0; i < empList.Count; i++) // loops the objects in file
+                    {
+                        if (booleanOperator == "And" && comparison(empList[i].getEmployee(firstValue), textBox1.Text, comparison1) && comparison(empList[i].getEmployee(secondValue), textBox2.Text, comparison2))
+                        {
+                            if (!result.Contains(empList[i]))
+                                result.Add(empList[i]);
+                        }
+
+                        else if (booleanOperator == "OR" && (comparison(empList[i].getEmployee(firstValue), textBox1.Text, comparison1) || comparison(empList[i].getEmployee(secondValue), textBox2.Text, comparison2)))
+                        {
+                            if (!result.Contains(empList[i]))
+                                result.Add(empList[i]);
+                        }
+
+                        else if (booleanOperator == "\"\"" && comparison(empList[i].getEmployee(firstValue), textBox1.Text, comparison1))
+                        {
+                            if (!result.Contains(empList[i]))
+                                result.Add(empList[i]);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
+
+
+
         public void AggregationTable(string type , string value)
         {
             if (type == "Departments")
@@ -226,6 +271,52 @@ namespace Quering_module
                     label9.Text = ("Variance: " + result);
                 }
             }
+            else if (type == "Employees")
+            {
+                if (Aggregate_combobox.Text == "Sum")
+                {
+                    int result = 0;
+                    for (int i = 0; i < empList.Count; i++)
+                    {
+                        result += int.Parse(empList[i].getEmployee(value));
+                    }
+                    label9.Text = ("Sum: " + result);
+                }
+                else if (Aggregate_combobox.Text == "Avg")
+                {
+                    double result = 0;
+                    for (int i = 0; i < empList.Count; i++)
+                    {
+                        result += double.Parse(empList[i].getEmployee(value));
+                    }
+                    result /= empList.Count;
+                    result = Math.Round(result, 3);
+                    label9.Text = ("Average: " + result);
+                }
+                else if (Aggregate_combobox.Text == "Count")
+                {
+                    label9.Text = ("Count: " + empList.Count);
+                }
+                else if (Aggregate_combobox.Text == "Var")
+                {
+                    double result;
+                    double mean = 0;
+                    for (int i = 0; i < empList.Count; i++)
+                    {
+                        mean += double.Parse(empList[i].getEmployee(value));
+                    }
+                    mean /= deplist.Count;
+                    mean = Math.Round(mean, 3);
+                    double upper = 0;
+                    for (int i = 0; i < empList.Count; i++)
+                    {
+                        upper += Math.Pow(double.Parse(empList[i].getEmployee(value)) - mean, 2);
+                    }
+                    result = upper / (empList.Count - 1);
+                    result = Math.Round(result, 3);
+                    label9.Text = ("Variance: " + result);
+                }
+            }
         }
 
         public Form1()
@@ -265,7 +356,10 @@ namespace Quering_module
                     resultGrid.DataSource = carTablel(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
                 else if (comboBox1.SelectedItem.Equals("Departments"))
                     resultGrid.DataSource = DepartmentTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
-            }catch(Exception ex)
+                else if (comboBox1.SelectedItem.Equals("Employees"))
+                    resultGrid.DataSource = EmployeesTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Please Select A Table First");
             }
@@ -290,6 +384,14 @@ namespace Quering_module
                 deplist =  deps.read();
                 Tbl.DataSource = deplist;
                 showColumns("Departments");
+            }
+
+            else if (selectedItem == "Employees")
+            {
+                emps = new EmployeesList();
+                empList = emps.read();
+                Tbl.DataSource = empList;
+                showColumns("Employees");
             }
         }
         private void showColumns(string type) //add columns names to each comboBox
@@ -318,6 +420,19 @@ namespace Quering_module
                 }
                 if (!comboBox7.Items.Contains(deps.colNames()[2]))
                     comboBox7.Items.Add(deps.colNames()[2]); //aggregation functions for NumOfEmployees
+            }
+
+            else if (type == "Employees")
+            {
+                for (int i = 0; i < emps.colNames().Count; i++)
+                {
+                    if (!comboBox8.Items.Contains(emps.colNames()[i]))
+                        comboBox8.Items.Add(emps.colNames()[i]);
+                    if (!comboBox2.Items.Contains(emps.colNames()[i]))
+                        comboBox2.Items.Add(emps.colNames()[i]);
+                }
+                if (!comboBox7.Items.Contains(emps.colNames()[2]))
+                    comboBox7.Items.Add(emps.colNames()[2]); //aggregation functions for NumOfEmployees
             }
         }
         
