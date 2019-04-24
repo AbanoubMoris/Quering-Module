@@ -76,6 +76,56 @@ namespace Quering_module
                             }
                         }
                     }
+                    else if (comparison == "<")
+                    {
+                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (int.Parse(carLst[i].StockNumber) < int.Parse(queryPnl[j].getTextBox().Text))
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                        }
+                    }
+                    else if (comparison == "!=")
+                    {
+                        if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[0])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].StockNumber != queryPnl[j].getTextBox().Text)
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                        }
+                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[1])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].Make != queryPnl[j].getTextBox().Text)
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                        }
+                        else if (queryPnl[j].getComboBox().SelectedItem.ToString() == cars.colNames()[2])
+                        {
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                if (carLst[i].Model != queryPnl[j].getTextBox().Text)
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -162,6 +212,8 @@ namespace Quering_module
                     break;
                 case 1:
                     queryPnl[panel3.Controls.Count - 1].setComparison("<");
+                    oo("<");
+                    resultGrid.DataSource = result;
                     break;
                 case 2:
                     queryPnl[panel3.Controls.Count - 1].setComparison("=");
@@ -170,6 +222,8 @@ namespace Quering_module
                     break;
                 case 3:
                     queryPnl[panel3.Controls.Count - 1].setComparison("!=");
+                    oo("!=");
+                    resultGrid.DataSource = result;
                     break;
 
                 default:
