@@ -20,106 +20,75 @@ namespace Quering_module
 
         //List<Car> result = new List<Car>();
 
+        public bool comparison(string A , string B , string comp)
+        {
 
-        public List<Car> oo(string comp1 , string comp2 , string booleanOperator)
+                if (comp == "=" && A == B) return true;
+                else if (comp == "!=" && A != B) return true;
+                try{
+                    if (comp == ">" && int.Parse(A) > int.Parse(B)) return true;
+                }catch (Exception){}
+                try{
+                    if (comp == "<" && int.Parse(A) < int.Parse(B)) return true;
+                }catch (Exception){}
+            return false;
+        }
+        public List<Car> carTablel(string comp1, string comp2, string FirstComboBox , string SecondComboBox, string booleanOperator)
         {
             List<Car> result = new List<Car>();
             {
-                if (comp1 == "=")
+
+                for (int j = 0; j < cars.colNames().Count; j++)
                 {
-                    for (int j = 0; j < cars.colNames().Count; j++)
+                    if (FirstComboBox == cars.colNames()[j])
                     {
-                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
+                        for (int i = 0; i < carLst.Count; i++)
                         {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].StockNumber == textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                    
-                                }
-                                else if (carLst[i].Model == textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-                                else if (carLst[i].Make == textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-
-                            }
-                        }
-
-
-                    }
-                }
-                else if (comp1 == "!=")
-                {
-                    for (int j = 0; j < cars.colNames().Count; j++)
-                    {
-                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (carLst[i].StockNumber != textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-                                else if (carLst[i].Model != textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-                                else if (carLst[i].Make != textBox2.Text)
-                                {
-                                    if (!result.Contains(carLst[i]))
-                                        result.Add(carLst[i]);
-                                }
-
-                            }
-                        }
-
-
-                    }
-                }
-                else if (comp1 == ">")
-                {
-                    for (int j = 0; j < cars.colNames().Count; j++)
-                    {
-                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
-                            {
-                                if (int.Parse(carLst[i].StockNumber) > int.Parse(textBox2.Text))
+                            if (booleanOperator == "And" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1)) {
+                                if(comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
-                        }
-
-                    }
-                }
-                else if (comp1 == "<")
-                {
-                    for (int j = 0; j < cars.colNames().Count; j++)
-                    {
-                        if (comboBox8.SelectedItem.ToString() == cars.colNames()[j])
-                        {
-                            for (int i = 0; i < carLst.Count; i++)
+                            if (booleanOperator == "And" && comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
                             {
-                                if (int.Parse(carLst[i].StockNumber) < int.Parse(textBox2.Text))
+                                if (comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
                                 {
                                     if (!result.Contains(carLst[i]))
                                         result.Add(carLst[i]);
                                 }
                             }
+
+                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                            {
+                                if (!result.Contains(carLst[i]))
+                                    result.Add(carLst[i]);
+                                if (comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                            if (booleanOperator == "OR" && comparison(carLst[i].getCar(SecondComboBox), textBox1.Text, comp2))
+                            {
+                                if (!result.Contains(carLst[i]))
+                                    result.Add(carLst[i]);    
+                                if (comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                                {
+                                    if (!result.Contains(carLst[i]))
+                                        result.Add(carLst[i]);
+                                }
+                            }
+                            if (booleanOperator == "" && comparison(carLst[i].getCar(FirstComboBox), textBox2.Text, comp1))
+                            {
+                                if (!result.Contains(carLst[i]))
+                                    result.Add(carLst[i]);
+                            }
                         }
                     }
+
+
                 }
             }
             return result;
@@ -159,7 +128,7 @@ namespace Quering_module
             TablePnl.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
-            resultGrid.DataSource = oo(assign_lbl1.Text, label3.Text, "");
+            resultGrid.DataSource = carTablel(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
         }
         string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

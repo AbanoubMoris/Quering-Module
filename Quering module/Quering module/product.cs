@@ -12,7 +12,17 @@ namespace Quering_module
         public string StockNumber { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
+
+        public string getCar(string colName)
+        {
+
+            if (colName == "StockNumber") return StockNumber;
+            else if (colName == "Make") return Make;
+            else if (colName == "Model") return Model;
+            return null;
+        }
     }
+
 
 
   //  [Serializable()]
@@ -38,5 +48,6 @@ namespace Quering_module
             lst.Add("Model");
             return lst;
         }
+        
     }
 }
