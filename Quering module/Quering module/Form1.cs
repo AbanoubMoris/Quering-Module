@@ -143,7 +143,7 @@ namespace Quering_module
         {
             List<Employee> result = new List<Employee>();
 
-            for (int j = 0; j < emps.colNames().Count; j++) // loops the columns of department
+            for (int j = 0; j < emps.colNames().Count; j++) // loops the columns of employee
             {
                 if (firstValue == emps.colNames()[j])
                 {
@@ -305,7 +305,7 @@ namespace Quering_module
                     {
                         mean += double.Parse(empList[i].getEmployee(value));
                     }
-                    mean /= deplist.Count;
+                    mean /= empList.Count;
                     mean = Math.Round(mean, 3);
                     double upper = 0;
                     for (int i = 0; i < empList.Count; i++)
@@ -368,6 +368,7 @@ namespace Quering_module
         string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            clear();
             selectedItem = comboBox1.SelectedItem.ToString();
             if (selectedItem == "cars")
             {
@@ -396,43 +397,37 @@ namespace Quering_module
         }
         private void showColumns(string type) //add columns names to each comboBox
         {
+            comboBox8.Items.Clear();
+            comboBox2.Items.Clear();
+            comboBox7.Items.Clear();
             if (type == "Cars")
             {
                 for (int i = 0; i < cars.colNames().Count; i++)
                 {
-                    if (!comboBox8.Items.Contains(cars.colNames()[i]))
-                        comboBox8.Items.Add(cars.colNames()[i]);
-                    if (!comboBox2.Items.Contains(cars.colNames()[i]))
-                        comboBox2.Items.Add(cars.colNames()[i]);
+                    comboBox8.Items.Add(cars.colNames()[i]);
+                    comboBox2.Items.Add(cars.colNames()[i]);
                 }
-                if (!comboBox7.Items.Contains(cars.colNames()[0]))
-                    comboBox7.Items.Add(cars.colNames()[0]); //aggregation functions stock Number
+                comboBox7.Items.Add(cars.colNames()[0]); //aggregation functions stock Number
             }
 
             else if(type == "Departments")
             {
                 for(int i=0; i<deps.colNames().Count; i++)
                 {
-                    if (!comboBox8.Items.Contains(deps.colNames()[i]))
-                        comboBox8.Items.Add(deps.colNames()[i]);
-                    if (!comboBox2.Items.Contains(deps.colNames()[i]))
-                        comboBox2.Items.Add(deps.colNames()[i]);
+                    comboBox8.Items.Add(deps.colNames()[i]);
+                    comboBox2.Items.Add(deps.colNames()[i]);
                 }
-                if (!comboBox7.Items.Contains(deps.colNames()[2]))
-                    comboBox7.Items.Add(deps.colNames()[2]); //aggregation functions for NumOfEmployees
+                comboBox7.Items.Add(deps.colNames()[2]); //aggregation functions for NumOfEmployees
             }
 
             else if (type == "Employees")
             {
                 for (int i = 0; i < emps.colNames().Count; i++)
                 {
-                    if (!comboBox8.Items.Contains(emps.colNames()[i]))
-                        comboBox8.Items.Add(emps.colNames()[i]);
-                    if (!comboBox2.Items.Contains(emps.colNames()[i]))
-                        comboBox2.Items.Add(emps.colNames()[i]);
+                    comboBox8.Items.Add(emps.colNames()[i]);
+                    comboBox2.Items.Add(emps.colNames()[i]);
                 }
-                if (!comboBox7.Items.Contains(emps.colNames()[2]))
-                    comboBox7.Items.Add(emps.colNames()[2]); //aggregation functions for NumOfEmployees
+                comboBox7.Items.Add(emps.colNames()[3]); //aggregation functions for Salary
             }
         }
         
@@ -531,6 +526,8 @@ namespace Quering_module
             Aggregate_combobox.Text = "";
             comboBox7.Text = "";
             label9.Text = "";
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -557,10 +554,31 @@ namespace Quering_module
             {
                 for (int i = 0; i < carLst.Count; i++)
                 {
-                    if (carLst[i].getCar(comboBox8.Text) == textBox2.Text)
+                    if (carLst[i].getCar(comboBox2.Text) == textBox2.Text)
                     {
                         pictureBox2.ImageLocation = @"t.png";
                         break;
+                    }
+                    else if(textBox2.Text == "")
+                    {
+                        pictureBox2.Image = null;
+                    }
+                    else pictureBox2.ImageLocation = @"f.png";
+
+                }
+            }
+            else if (comboBox1.Text == "Departments")
+            {
+                for (int i = 0; i < deplist.Count; i++)
+                {
+                    if (deplist[i].getDepartment(comboBox2.Text) == textBox2.Text)
+                    {
+                        pictureBox2.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else if (textBox2.Text == "")
+                    {
+                        pictureBox2.Image = null;
                     }
                     else pictureBox2.ImageLocation = @"f.png";
 
@@ -579,10 +597,36 @@ namespace Quering_module
                         pictureBox1.ImageLocation = @"t.png";
                         break;
                     }
+                    else if(textBox1.Text == "")
+                    {
+                        pictureBox1.Image = null;
+                    }
                     else pictureBox1.ImageLocation = @"f.png";
 
                 }
             }
+            else if(comboBox1.Text =="Departments")
+            {
+                for (int i = 0; i < deplist.Count; i++)
+                {
+                    if (deplist[i].getDepartment(comboBox8.Text) == textBox1.Text)
+                    {
+                        pictureBox1.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else if (textBox1.Text == "")
+                    {
+                        pictureBox1.Image = null;
+                    }
+                    else pictureBox1.ImageLocation = @"f.png";
+
+                }
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

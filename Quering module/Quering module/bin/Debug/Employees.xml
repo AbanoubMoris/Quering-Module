@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfEmployees>
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEmployee>
   <Employee>
     <id>1</id>
     <Name>mona</Name>
@@ -35,4 +35,4 @@
     <Salary>2000</Salary>
     <DepartmentId>3</DepartmentId>
   </Employee>
-</ArrayOfEmployees>
+</ArrayOfEmployee>
