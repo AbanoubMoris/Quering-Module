@@ -226,7 +226,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(669, 532);
+            this.clearButton.Location = new System.Drawing.Point(669, 481);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(107, 37);
             this.clearButton.TabIndex = 22;
