@@ -15,4 +15,34 @@
     <Make>Honda</Make>
     <Model>Accord</Model>
   </Car>
+  <Car>
+    <StockNumber>1234</StockNumber>
+    <Make>Ford</Make>
+    <Model>B-MAX</Model>
+  </Car>
+  <Car>
+    <StockNumber>2465</StockNumber>
+    <Make>Skoda</Make>
+    <Model>Octavia</Model>
+  </Car>
+  <Car>
+    <StockNumber>1354</StockNumber>
+    <Make>Volkswagen</Make>
+    <Model>Atlas</Model>
+  </Car>
+  <Car>
+    <StockNumber>9314</StockNumber>
+    <Make>Lamborghini</Make>
+    <Model>Reventon</Model>
+  </Car>
+  <Car>
+    <StockNumber>1934</StockNumber>
+    <Make>Infiniti</Make>
+    <Model>Project Black S</Model>
+  </Car>
+  <Car>
+    <StockNumber>3164</StockNumber>
+    <Make>Jaguar</Make>
+    <Model>XK 8</Model>
+  </Car>
 </ArrayOfCar>

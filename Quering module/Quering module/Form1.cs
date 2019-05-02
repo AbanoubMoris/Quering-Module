@@ -13,7 +13,10 @@ namespace Quering_module
 
     public partial class Form1 : Form
     {
-
+        bool hidden = false;
+        int panelwidth;
+       
+       
         private CarCollection cars;
 
         private List<Car> carLst;
@@ -325,7 +328,7 @@ namespace Quering_module
             panel3.AutoScroll = true;
             pictureBox1.Image = null;
             pictureBox2.Image = null;
-
+            panelwidth = Buttons_pnl_Sliding.Width;
         }
       
 
@@ -343,6 +346,19 @@ namespace Quering_module
             ResPnl.Visible = false;
             QueryPnl.Visible = true;
             resultGrid.DataSource = null;
+            try
+            {
+                if (comboBox1.SelectedItem.Equals("cars"))
+                    resultGrid.DataSource = carTablel(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+                else if (comboBox1.SelectedItem.Equals("Departments"))
+                    resultGrid.DataSource = DepartmentTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+                else if (comboBox1.SelectedItem.Equals("Employees"))
+                    resultGrid.DataSource = EmployeesTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Please Select A Table First");
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e) //if click result
@@ -627,6 +643,61 @@ namespace Quering_module
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ExitPic_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity > 0.0)
+            {
+                this.Opacity -= 0.25;
+
+            }
+            else
+            {
+                timer1.Stop();
+                Application.Exit();
+            }
+        }
+       
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (hidden)
+            {
+                Buttons_pnl_Sliding.Width += 10;
+                TablePnl.Left += 10;
+                QueryPnl.Left += 10;
+                ResPnl.Left += 10;
+                if (Buttons_pnl_Sliding.Width >= panelwidth)
+                {
+                    timer2.Stop();
+                    hidden = false;
+                    this.Refresh();
+                }
+            }
+            else
+            {
+                Buttons_pnl_Sliding.Width -= 10;
+                TablePnl.Left -= 10;
+                QueryPnl.Left -= 10;
+                ResPnl.Left -= 10;
+                if (Buttons_pnl_Sliding.Width <= 0)
+                {
+                    timer2.Stop();
+                    hidden = true;
+                    this.Refresh();
+                }
+            }
+        }
+
+        private void pictureBox21_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
         }
     }
 }
