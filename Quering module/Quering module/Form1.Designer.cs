@@ -281,6 +281,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(140, 24);
             this.comboBox2.TabIndex = 11;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -290,7 +291,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "lbl";
+            this.label3.Text = "\"\"";
             // 
             // textBox2
             // 
@@ -342,6 +343,7 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(140, 24);
             this.comboBox8.TabIndex = 11;
+            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
             // 
             // assign_lbl1
             // 
@@ -351,7 +353,7 @@
             this.assign_lbl1.Name = "assign_lbl1";
             this.assign_lbl1.Size = new System.Drawing.Size(20, 17);
             this.assign_lbl1.TabIndex = 9;
-            this.assign_lbl1.Text = "lbl";
+            this.assign_lbl1.Text = "\"\"";
             // 
             // textBox1
             // 
@@ -526,9 +528,9 @@
             this.ClientSize = new System.Drawing.Size(1112, 605);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Buttons_pnl_Sliding);
+            this.Controls.Add(this.QueryPnl);
             this.Controls.Add(this.TablePnl);
             this.Controls.Add(this.ResPnl);
-            this.Controls.Add(this.QueryPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";

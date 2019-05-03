@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Media;
 namespace Quering_module
 {
 
@@ -334,6 +334,8 @@ namespace Quering_module
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Button Click .wav");
+            sound.Play();
             TablePnl.Visible = true;
             ResPnl.Visible = false;
             QueryPnl.Visible = false;
@@ -342,6 +344,8 @@ namespace Quering_module
         }
         private void Button2_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Button Click .wav");
+            sound.Play();
             TablePnl.Visible = false;
             ResPnl.Visible = false;
             QueryPnl.Visible = true;
@@ -357,12 +361,16 @@ namespace Quering_module
             }
             catch (Exception ex)
             {
+                SoundPlayer snd = new SoundPlayer("sms-alert.wav");
+                snd.Play();
                 MessageBox.Show("Please Select A Table First");
             }
         }
 
         private void Button3_Click(object sender, EventArgs e) //if click result
         {
+            SoundPlayer sound = new SoundPlayer("Button Click .wav");
+            sound.Play();
             TablePnl.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
@@ -377,6 +385,8 @@ namespace Quering_module
             }
             catch(Exception ex)
             {
+                SoundPlayer snd = new SoundPlayer("sms-alert.wav");
+                snd.Play();
                 MessageBox.Show("Please Select A Table First");
             }
 
@@ -384,6 +394,9 @@ namespace Quering_module
         string selectedItem;
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
             clear();
             selectedItem = comboBox1.SelectedItem.ToString();
             if (selectedItem == "cars")
@@ -449,6 +462,8 @@ namespace Quering_module
         
         private void Comparision_compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
             int selectedIndex = Comparision_compobox.SelectedIndex;
             
             switch (selectedIndex)
@@ -478,6 +493,8 @@ namespace Quering_module
         
         private void Bool_Compobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
             int selectedIndex = bool_Compobox.SelectedIndex;
             switch (selectedIndex)
             {
@@ -501,6 +518,8 @@ namespace Quering_module
 
         private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
             int selectedIndex = comboBox3.SelectedIndex;
 
             switch (selectedIndex)
@@ -548,18 +567,24 @@ namespace Quering_module
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Button Click .wav");
+            sound.Play();
             clear();
         }
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
             if (comboBox1.Text != "" && comboBox7.Text != "")
                 AggregationTable(comboBox1.Text, comboBox7.Text);
         }
 
         private void Aggregate_combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox1.Text!="" && comboBox7.Text!="")
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
+            if (comboBox1.Text!="" && comboBox7.Text!="")
                AggregationTable(comboBox1.Text, comboBox7.Text);
         }
 
@@ -572,15 +597,20 @@ namespace Quering_module
                 {
                     if (carLst[i].getCar(comboBox2.Text) == textBox2.Text)
                     {
+
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
                         pictureBox2.ImageLocation = @"t.png";
                         break;
                     }
-                    else if(textBox2.Text == "")
+                    else if (textBox2.Text == "")
                     {
                         pictureBox2.Image = null;
                     }
-                    else pictureBox2.ImageLocation = @"f.png";
-
+                    else
+                    {
+                        pictureBox2.ImageLocation = @"f.png";
+                    }
                 }
             }
             else if (comboBox1.Text == "Departments")
@@ -589,6 +619,8 @@ namespace Quering_module
                 {
                     if (deplist[i].getDepartment(comboBox2.Text) == textBox2.Text)
                     {
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
                         pictureBox2.ImageLocation = @"t.png";
                         break;
                     }
@@ -596,8 +628,31 @@ namespace Quering_module
                     {
                         pictureBox2.Image = null;
                     }
-                    else pictureBox2.ImageLocation = @"f.png";
-
+                    else
+                    {
+                        pictureBox2.ImageLocation = @"f.png";
+                    }
+                }
+            }
+            else if (comboBox1.Text == "Employees")
+            {
+                for (int i = 0; i < empList.Count; i++)
+                {
+                    if (empList[i].getEmployee(comboBox2.Text) == textBox2.Text)
+                    {
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
+                        pictureBox2.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else if (textBox2.Text == "")
+                    {
+                        pictureBox2.Image = null;
+                    }
+                    else
+                    {
+                        pictureBox2.ImageLocation = @"f.png";
+                    }
                 }
             }
         }
@@ -610,15 +665,20 @@ namespace Quering_module
                 {
                     if (carLst[i].getCar(comboBox8.Text) == textBox1.Text)
                     {
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
                         pictureBox1.ImageLocation = @"t.png";
                         break;
                     }
-                    else if(textBox1.Text == "")
+                    else if (textBox1.Text == "")
                     {
                         pictureBox1.Image = null;
                     }
-                    else pictureBox1.ImageLocation = @"f.png";
-
+                    else
+                    {
+                        pictureBox1.ImageLocation = @"f.png";
+                        
+                    }
                 }
             }
             else if(comboBox1.Text =="Departments")
@@ -627,6 +687,8 @@ namespace Quering_module
                 {
                     if (deplist[i].getDepartment(comboBox8.Text) == textBox1.Text)
                     {
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
                         pictureBox1.ImageLocation = @"t.png";
                         break;
                     }
@@ -634,11 +696,35 @@ namespace Quering_module
                     {
                         pictureBox1.Image = null;
                     }
-                    else pictureBox1.ImageLocation = @"f.png";
-
+                    else
+                    {
+                        pictureBox1.ImageLocation = @"f.png";
+                    }
+                }
+            }
+            else if (comboBox1.Text == "Employees")
+            {
+                for (int i = 0; i < empList.Count; i++)
+                {
+                    if (empList[i].getEmployee(comboBox8.Text) == textBox1.Text)
+                    {
+                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                        sound.Play();
+                        pictureBox1.ImageLocation = @"t.png";
+                        break;
+                    }
+                    else if (textBox1.Text == "")
+                    {
+                        pictureBox1.Image = null;
+                    }
+                    else
+                    {
+                        pictureBox1.ImageLocation = @"f.png";
+                    }
                 }
             }
         }
+       
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -698,6 +784,18 @@ namespace Quering_module
         private void pictureBox21_Click(object sender, EventArgs e)
         {
             timer2.Start();
+        }
+
+        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
+            sound.Play();
         }
     }
 }
