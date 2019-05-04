@@ -19,17 +19,16 @@ namespace Quering_module
        
         private CarCollection cars;
 
-        private List<Car> carLst;
+        private List<Car> carLst = new List<Car>();
 
         //List<Car> result = new List<Car>();
-
+        
         private DepartmentsList deps;
-        private List<Department> deplist;
-
+        private List<Department> deplist = new List<Department>();
 
         private EmployeesList emps;
-        private List<Employee> empList;
-
+        private List<Employee> empList = new List<Employee>();
+        
         public bool comparison(string A , string B , string comp)
         {
 
@@ -324,11 +323,13 @@ namespace Quering_module
 
         public Form1()
         {
+
             InitializeComponent();
             panel3.AutoScroll = true;
             pictureBox1.Image = null;
             pictureBox2.Image = null;
             panelwidth = Buttons_pnl_Sliding.Width;
+
         }
       
 
@@ -382,6 +383,8 @@ namespace Quering_module
                     resultGrid.DataSource = DepartmentTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
                 else if (comboBox1.SelectedItem.Equals("Employees"))
                     resultGrid.DataSource = EmployeesTable(assign_lbl1.Text, label3.Text, comboBox8.Text, comboBox2.Text, label8.Text);
+
+                Tbl.DataSource = null;
             }
             catch(Exception ex)
             {
@@ -590,68 +593,77 @@ namespace Quering_module
 
         private void textBox2_TextChanged_1(object sender, EventArgs e)
         {
-
-            if (comboBox1.Text == "cars")
+            if (label3.Text == "=" || label3.Text == "!=")
             {
-                for (int i = 0; i < carLst.Count; i++)
+                if (comboBox1.Text == "cars")
                 {
-                    if (carLst[i].getCar(comboBox2.Text) == textBox2.Text)
+                    for (int i = 0; i < carLst.Count; i++)
                     {
+                        if (carLst[i].getCar(comboBox2.Text) == textBox2.Text)
+                        {
 
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox2.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox2.Text == "")
-                    {
-                        pictureBox2.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox2.ImageLocation = @"f.png";
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox2.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox2.Text == "")
+                        {
+                            pictureBox2.Image = null;
+                        }
+                        else
+                        {
+                           // SoundPlayer snd = new SoundPlayer("beep.wav");
+                           // snd.Play();
+                            pictureBox2.ImageLocation = @"f.png";
+                        }
                     }
                 }
-            }
-            else if (comboBox1.Text == "Departments")
-            {
-                for (int i = 0; i < deplist.Count; i++)
+
+                else if (comboBox1.Text == "Departments")
                 {
-                    if (deplist[i].getDepartment(comboBox2.Text) == textBox2.Text)
+                    for (int i = 0; i < deplist.Count; i++)
                     {
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox2.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox2.Text == "")
-                    {
-                        pictureBox2.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox2.ImageLocation = @"f.png";
+                        if (deplist[i].getDepartment(comboBox2.Text) == textBox2.Text)
+                        {
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox2.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox2.Text == "")
+                        {
+                            pictureBox2.Image = null;
+                        }
+                        else
+                        {
+                            pictureBox2.ImageLocation = @"f.png";
+                           // SoundPlayer snd = new SoundPlayer("beep.wav");
+                           // snd.Play();
+                        }
                     }
                 }
-            }
-            else if (comboBox1.Text == "Employees")
-            {
-                for (int i = 0; i < empList.Count; i++)
+                else if (comboBox1.Text == "Employees")
                 {
-                    if (empList[i].getEmployee(comboBox2.Text) == textBox2.Text)
+                    for (int i = 0; i < empList.Count; i++)
                     {
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox2.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox2.Text == "")
-                    {
-                        pictureBox2.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox2.ImageLocation = @"f.png";
+                        if (empList[i].getEmployee(comboBox2.Text) == textBox2.Text)
+                        {
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox2.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox2.Text == "")
+                        {
+                            pictureBox2.Image = null;
+                        }
+                        else
+                        {
+                            pictureBox2.ImageLocation = @"f.png";
+                          //  SoundPlayer snd = new SoundPlayer("beep.wav");
+                          //  snd.Play();
+                        }
                     }
                 }
             }
@@ -659,75 +671,79 @@ namespace Quering_module
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "cars")
+            if (assign_lbl1.Text == "=" || assign_lbl1.Text == "!=")
             {
-                for (int i = 0; i < carLst.Count; i++)
+                if (comboBox1.Text == "cars")
                 {
-                    if (carLst[i].getCar(comboBox8.Text) == textBox1.Text)
+                    for (int i = 0; i < carLst.Count; i++)
                     {
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox1.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox1.Text == "")
-                    {
-                        pictureBox1.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox1.ImageLocation = @"f.png";
-                        
-                    }
-                }
-            }
-            else if(comboBox1.Text =="Departments")
-            {
-                for (int i = 0; i < deplist.Count; i++)
-                {
-                    if (deplist[i].getDepartment(comboBox8.Text) == textBox1.Text)
-                    {
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox1.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox1.Text == "")
-                    {
-                        pictureBox1.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox1.ImageLocation = @"f.png";
-                    }
-                }
-            }
-            else if (comboBox1.Text == "Employees")
-            {
-                for (int i = 0; i < empList.Count; i++)
-                {
-                    if (empList[i].getEmployee(comboBox8.Text) == textBox1.Text)
-                    {
-                        SoundPlayer sound = new SoundPlayer("A-Tone.wav");
-                        sound.Play();
-                        pictureBox1.ImageLocation = @"t.png";
-                        break;
-                    }
-                    else if (textBox1.Text == "")
-                    {
-                        pictureBox1.Image = null;
-                    }
-                    else
-                    {
-                        pictureBox1.ImageLocation = @"f.png";
-                    }
-                }
-            }
-        }
-       
+                        if (carLst[i].getCar(comboBox8.Text) == textBox1.Text)
+                        {
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox1.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox1.Text == "")
+                        {
+                            pictureBox1.Image = null;
+                        }
+                        else
+                        {
+                            pictureBox1.ImageLocation = @"f.png";
+                          //  SoundPlayer snd = new SoundPlayer("beep.wav");
+                          //  snd.Play();
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+                        }
+                    }
+                }
+                else if (comboBox1.Text == "Departments")
+                {
+                    for (int i = 0; i < deplist.Count; i++)
+                    {
+                        if (deplist[i].getDepartment(comboBox8.Text) == textBox1.Text)
+                        {
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox1.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox1.Text == "")
+                        {
+                            pictureBox1.Image = null;
+                        }
+                        else
+                        {
+                            pictureBox1.ImageLocation = @"f.png";
+                           // SoundPlayer snd = new SoundPlayer("beep.wav");
+                            //snd.Play();
+                        }
+                    }
+                }
+                else if (comboBox1.Text == "Employees")
+                {
+                    for (int i = 0; i < empList.Count; i++)
+                    {
+                        if (empList[i].getEmployee(comboBox8.Text) == textBox1.Text)
+                        {
+                            SoundPlayer sound = new SoundPlayer("A-Tone.wav");
+                            sound.Play();
+                            pictureBox1.ImageLocation = @"t.png";
+                            break;
+                        }
+                        else if (textBox1.Text == "")
+                        {
+                            pictureBox1.Image = null;
+                        }
+                        else
+                        {
+                            pictureBox1.ImageLocation = @"f.png";
+                            //SoundPlayer snd = new SoundPlayer("beep.wav");
+                           // snd.Play();
+                        }
+                    }
+                }
+            }
 
         }
 

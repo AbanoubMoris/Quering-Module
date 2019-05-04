@@ -333,7 +333,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // comboBox8
             // 
@@ -528,9 +527,9 @@
             this.ClientSize = new System.Drawing.Size(1112, 605);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Buttons_pnl_Sliding);
-            this.Controls.Add(this.QueryPnl);
             this.Controls.Add(this.TablePnl);
             this.Controls.Add(this.ResPnl);
+            this.Controls.Add(this.QueryPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";

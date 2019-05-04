@@ -49,3 +49,14 @@ C:\Users\Thomas\Documents\GitHub\Quering-Module\Quering module\Quering module\ob
 C:\Users\Thomas\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.GenerateResource.cache
 C:\Users\Thomas\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.CoreCompileInputs.cache
 C:\Users\hs\Documents\GitHub\Quering-Module\Quering module\Quering module\obj\Debug\Quering_module.Start.resources
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\bin\Debug\Quering module.exe.config
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\bin\Debug\Quering module.exe
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\bin\Debug\Quering module.pdb
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.csprojAssemblyReference.cache
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering_module.Form1.resources
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering_module.Properties.Resources.resources
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering_module.Start.resources
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.GenerateResource.cache
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.CoreCompileInputs.cache
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.exe
+C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.pdb
