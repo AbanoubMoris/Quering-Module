@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
 namespace Quering_module
 {
 
     public partial class Form1 : Form
     {
+       
         bool hidden = false;
         int panelwidth;
-       
-       
+        List<string> L =  new List<string>();
+
         private CarCollection cars;
 
         private List<Car> carLst = new List<Car>();
@@ -28,19 +30,55 @@ namespace Quering_module
 
         private EmployeesList emps;
         private List<Employee> empList = new List<Employee>();
-        
-        public bool comparison(string A , string B , string comp)
+
+        public bool comparison(string A, string B, string comp)
         {
 
-                if (comp == "=" && A == B) return true;
-                else if (comp == "!=" && A != B) return true;
-                try{
-                    if (comp == ">" && int.Parse(A) > int.Parse(B)) return true;
-                }catch (Exception){}
-                try{
-                    if (comp == "<" && int.Parse(A) < int.Parse(B)) return true;
-                }catch (Exception){}
-            return false;
+            if (comp == "=" && A == B) return true;
+            else if (comp == "!=" && A != B) return true;
+            try
+            {
+                if (comp == ">" && int.Parse(A) > int.Parse(B)) return true;
+            }
+            catch (Exception) { }
+            try
+            {
+                if (comp == "<" && int.Parse(A) < int.Parse(B)) return true;
+            }
+            catch (Exception) { }
+            try
+            {
+                if (comp == "<=" && int.Parse(A) <= int.Parse(B)) return true;
+            }
+            catch (Exception) { }
+            try
+            {
+                if (comp == ">=" && int.Parse(A) >= int.Parse(B)) return true;
+            }
+            catch (Exception) { }
+            try{
+                if (comp == "IN")
+                {
+                   string[]var = Split_txt();
+                    for(int i = 0; i < var.Length; i++)
+                    {
+                        if(var[i] == (string)A)
+                          return true;
+                    }
+                }
+               }
+               catch (Exception) { }
+            
+               return false;
+        }
+
+        public string[] Split_txt()
+        {
+            char seperator = ',';
+            var str = textBox1.Text;
+            string[] values = null;
+            values = str.Split(seperator);
+            return values;
         }
 
         public List<Car> carTablel(string comp1, string comp2, string FirstComboBox , string SecondComboBox, string booleanOperator)
@@ -329,7 +367,9 @@ namespace Quering_module
             pictureBox1.Image = null;
             pictureBox2.Image = null;
             panelwidth = Buttons_pnl_Sliding.Width;
-
+            panel3.Visible = false;
+            panel1.Visible = false;
+             
         }
       
 
@@ -350,6 +390,7 @@ namespace Quering_module
             TablePnl.Visible = false;
             ResPnl.Visible = false;
             QueryPnl.Visible = true;
+            clear();
             resultGrid.DataSource = null;
             try
             {
@@ -395,6 +436,7 @@ namespace Quering_module
 
         }
         string selectedItem;
+
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -468,6 +510,7 @@ namespace Quering_module
             SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
             sound.Play();
             int selectedIndex = Comparision_compobox.SelectedIndex;
+            panel3.Visible = true;
             
             switch (selectedIndex)
             {
@@ -487,6 +530,18 @@ namespace Quering_module
                     assign_lbl1.Text = "!=";
                     //resultGrid.DataSource = result;
                     break;
+                case 4:
+                    assign_lbl1.Text = ">=";
+                    //resultGrid.DataSource = result;
+                    break;
+                case 5:
+                    assign_lbl1.Text = "<=";
+                    //resultGrid.DataSource = result;
+                    break;
+                case 6:
+                    assign_lbl1.Text = "IN";
+                    //resultGrid.DataSource = result;
+                    break;
 
                 default:
                     break;
@@ -498,6 +553,8 @@ namespace Quering_module
         {
             SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
             sound.Play();
+           
+            panel1.Visible = true;
             int selectedIndex = bool_Compobox.SelectedIndex;
             switch (selectedIndex)
             {
@@ -543,7 +600,14 @@ namespace Quering_module
                     label3.Text = "!=";
                     //resultGrid.DataSource = result;
                     break;
-
+                case 4:
+                    label3.Text = ">=";
+                    //resultGrid.DataSource = result;
+                    break;
+                case 5:
+                    label3.Text = "<=";
+                    //resultGrid.DataSource = result;
+                    break;
                 default:
                     break;
             }
@@ -566,12 +630,15 @@ namespace Quering_module
             label9.Text = "";
             pictureBox1.Image = null;
             pictureBox2.Image = null;
+            panel3.Visible = false;
+            panel1.Visible = false;
         }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
             SoundPlayer sound = new SoundPlayer("Button Click .wav");
             sound.Play();
+            
             clear();
         }
 
@@ -749,7 +816,7 @@ namespace Quering_module
 
         private void ExitPic_Click(object sender, EventArgs e)
         {
-            timer1.Start();
+           
         }
         
 
@@ -769,12 +836,16 @@ namespace Quering_module
        
         private void timer2_Tick(object sender, EventArgs e)
         {
+           
             if (hidden)
             {
+                
                 Buttons_pnl_Sliding.Width += 10;
                 TablePnl.Left += 10;
                 QueryPnl.Left += 10;
                 ResPnl.Left += 10;
+              
+
                 if (Buttons_pnl_Sliding.Width >= panelwidth)
                 {
                     timer2.Stop();
@@ -788,6 +859,8 @@ namespace Quering_module
                 TablePnl.Left -= 10;
                 QueryPnl.Left -= 10;
                 ResPnl.Left -= 10;
+               
+                
                 if (Buttons_pnl_Sliding.Width <= 0)
                 {
                     timer2.Stop();
@@ -812,6 +885,11 @@ namespace Quering_module
         {
             SoundPlayer sound = new SoundPlayer("Pen Clicking.wav");
             sound.Play();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
         }
     }
 }

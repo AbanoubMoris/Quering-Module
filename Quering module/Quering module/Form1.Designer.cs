@@ -39,7 +39,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.QueryPnl = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.clearButton = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -64,11 +63,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ResPnl = new System.Windows.Forms.Panel();
             this.resultGrid = new System.Windows.Forms.DataGridView();
-            this.ExitPic = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.TablePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl)).BeginInit();
             this.Buttons_pnl_Sliding.SuspendLayout();
@@ -79,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ResPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExitPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +95,11 @@
             // 
             // Tbl
             // 
+            this.Tbl.AllowUserToResizeColumns = false;
+            this.Tbl.AllowUserToResizeRows = false;
+            this.Tbl.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Tbl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Tbl.Cursor = System.Windows.Forms.Cursors.No;
             this.Tbl.Location = new System.Drawing.Point(46, 145);
             this.Tbl.Margin = new System.Windows.Forms.Padding(4);
             this.Tbl.Name = "Tbl";
@@ -122,27 +124,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(358, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
+            this.label1.Size = new System.Drawing.Size(134, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Select Table";
             // 
             // Buttons_pnl_Sliding
             // 
+            this.Buttons_pnl_Sliding.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.Buttons_pnl_Sliding.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Buttons_pnl_Sliding.Controls.Add(this.button3);
             this.Buttons_pnl_Sliding.Controls.Add(this.button2);
             this.Buttons_pnl_Sliding.Controls.Add(this.button1);
-            this.Buttons_pnl_Sliding.Location = new System.Drawing.Point(0, 50);
+            this.Buttons_pnl_Sliding.Location = new System.Drawing.Point(0, 48);
             this.Buttons_pnl_Sliding.Margin = new System.Windows.Forms.Padding(4);
             this.Buttons_pnl_Sliding.Name = "Buttons_pnl_Sliding";
-            this.Buttons_pnl_Sliding.Size = new System.Drawing.Size(234, 555);
+            this.Buttons_pnl_Sliding.Size = new System.Drawing.Size(234, 544);
             this.Buttons_pnl_Sliding.TabIndex = 1;
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.Control;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -152,11 +157,12 @@
             this.button3.Size = new System.Drawing.Size(225, 52);
             this.button3.TabIndex = 2;
             this.button3.Text = "Result";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -166,11 +172,12 @@
             this.button2.Size = new System.Drawing.Size(225, 52);
             this.button2.TabIndex = 1;
             this.button2.Text = "Types of query";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -180,12 +187,11 @@
             this.button1.Size = new System.Drawing.Size(225, 52);
             this.button1.TabIndex = 0;
             this.button1.Text = "Select Table";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // QueryPnl
             // 
-            this.QueryPnl.Controls.Add(this.label2);
             this.QueryPnl.Controls.Add(this.label9);
             this.QueryPnl.Controls.Add(this.clearButton);
             this.QueryPnl.Controls.Add(this.comboBox3);
@@ -204,16 +210,6 @@
             this.QueryPnl.Name = "QueryPnl";
             this.QueryPnl.Size = new System.Drawing.Size(816, 542);
             this.QueryPnl.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(483, 97);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Coulmns";
             // 
             // label9
             // 
@@ -242,8 +238,10 @@
             ">",
             "<",
             "=",
-            "!="});
-            this.comboBox3.Location = new System.Drawing.Point(239, 175);
+            "!=",
+            ">=",
+            "<="});
+            this.comboBox3.Location = new System.Drawing.Point(239, 191);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(68, 24);
@@ -257,7 +255,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(388, 166);
+            this.panel1.Location = new System.Drawing.Point(388, 182);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(388, 43);
@@ -265,7 +263,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(348, 10);
+            this.pictureBox2.Location = new System.Drawing.Point(356, 10);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 23);
@@ -295,7 +293,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(224, 9);
+            this.textBox2.Location = new System.Drawing.Point(232, 9);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(116, 24);
@@ -326,7 +324,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(348, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(356, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 23);
@@ -356,7 +354,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(224, 9);
+            this.textBox1.Location = new System.Drawing.Point(232, 9);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(116, 24);
@@ -381,7 +379,10 @@
             ">",
             "<",
             "=",
-            "!="});
+            "!=",
+            ">=",
+            "<=",
+            "IN"});
             this.Comparision_compobox.Location = new System.Drawing.Point(138, 127);
             this.Comparision_compobox.Margin = new System.Windows.Forms.Padding(4);
             this.Comparision_compobox.Name = "Comparision_compobox";
@@ -395,7 +396,7 @@
             this.bool_Compobox.Items.AddRange(new object[] {
             "And ",
             "OR"});
-            this.bool_Compobox.Location = new System.Drawing.Point(138, 175);
+            this.bool_Compobox.Location = new System.Drawing.Point(138, 191);
             this.bool_Compobox.Margin = new System.Windows.Forms.Padding(4);
             this.bool_Compobox.Name = "bool_Compobox";
             this.bool_Compobox.Size = new System.Drawing.Size(93, 24);
@@ -405,7 +406,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 180);
+            this.label7.Location = new System.Drawing.Point(8, 196);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 17);
@@ -450,11 +451,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(337, 25);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 20);
+            this.label4.Size = new System.Drawing.Size(156, 25);
             this.label4.TabIndex = 0;
             this.label4.Text = "Types of query";
             // 
@@ -469,25 +470,16 @@
             // 
             // resultGrid
             // 
+            this.resultGrid.AllowUserToResizeColumns = false;
+            this.resultGrid.AllowUserToResizeRows = false;
+            this.resultGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.resultGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultGrid.Cursor = System.Windows.Forms.Cursors.No;
             this.resultGrid.Location = new System.Drawing.Point(32, 25);
             this.resultGrid.Margin = new System.Windows.Forms.Padding(4);
             this.resultGrid.Name = "resultGrid";
-            this.resultGrid.Size = new System.Drawing.Size(752, 532);
+            this.resultGrid.Size = new System.Drawing.Size(752, 493);
             this.resultGrid.TabIndex = 0;
-            // 
-            // ExitPic
-            // 
-            this.ExitPic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitPic.BackgroundImage")));
-            this.ExitPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ExitPic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExitPic.Location = new System.Drawing.Point(1073, 2);
-            this.ExitPic.Margin = new System.Windows.Forms.Padding(2);
-            this.ExitPic.Name = "ExitPic";
-            this.ExitPic.Size = new System.Drawing.Size(36, 42);
-            this.ExitPic.TabIndex = 6;
-            this.ExitPic.TabStop = false;
-            this.ExitPic.Click += new System.EventHandler(this.ExitPic_Click);
             // 
             // timer1
             // 
@@ -497,7 +489,7 @@
             // 
             this.pictureBox21.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
-            this.pictureBox21.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox21.Location = new System.Drawing.Point(4, 7);
             this.pictureBox21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(51, 39);
@@ -513,24 +505,40 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel2.Controls.Add(this.ExitPic);
+            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.pictureBox21);
-            this.panel2.Location = new System.Drawing.Point(0, 3);
+            this.panel2.Location = new System.Drawing.Point(0, -3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1111, 46);
+            this.panel2.Size = new System.Drawing.Size(1074, 52);
             this.panel2.TabIndex = 24;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(1031, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(43, 52);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "X";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1112, 605);
+            this.ClientSize = new System.Drawing.Size(1074, 589);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Buttons_pnl_Sliding);
+            this.Controls.Add(this.QueryPnl);
             this.Controls.Add(this.TablePnl);
             this.Controls.Add(this.ResPnl);
-            this.Controls.Add(this.QueryPnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -549,7 +557,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExitPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -559,7 +566,6 @@
         #endregion
 
         private System.Windows.Forms.Panel TablePnl;
-        private System.Windows.Forms.DataGridView Tbl;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Buttons_pnl_Sliding;
@@ -591,12 +597,12 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox ExitPic;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView Tbl;
     }
 }
 
