@@ -18,20 +18,7 @@ namespace Quering_module
     {
         static string connectionstring = @"Data Source=ERROR-404\SQLEXPRESS;Initial Catalog=QueryingModule;Integrated Security=True";
 
-        public void read()
-        {
-            SqlConnection con = new SqlConnection(connectionstring);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from CARTABLE(1010,'null','null')", con);
-            cmd.CommandType = CommandType.Text;
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                MessageBox.Show(dr["Make"].ToString());
-            }
-            dr.Close();
-            con.Close();
-        }
+        
         
         bool hidden = false;
         int panelwidth;
@@ -394,6 +381,7 @@ namespace Quering_module
         private void Button1_Click(object sender, EventArgs e)
         {
             SoundPlayer sound = new SoundPlayer("Button Click .wav");
+            panel5.Visible = false;
             sound.Play();
             TablePnl.Visible = true;
             ResPnl.Visible = false;
@@ -407,6 +395,7 @@ namespace Quering_module
             SoundPlayer sound = new SoundPlayer("Button Click .wav");
             sound.Play();
             TablePnl.Visible = false;
+            panel5.Visible = false;
             ResPnl.Visible = false;
             panel4.Visible = false;
             QueryPnl.Visible = true;
@@ -434,6 +423,7 @@ namespace Quering_module
             SoundPlayer sound = new SoundPlayer("Button Click .wav");
             sound.Play();
             TablePnl.Visible = false;
+            panel5.Visible = false;
             panel4.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
@@ -861,10 +851,10 @@ namespace Quering_module
             if (hidden)
             {
                 
-                Buttons_pnl_Sliding.Width += 10;
-                TablePnl.Left += 10;
-                QueryPnl.Left += 10;
-                ResPnl.Left += 10;
+                Buttons_pnl_Sliding.Width += 15;
+                TablePnl.Left += 15;
+                QueryPnl.Left += 15;
+                ResPnl.Left += 15;
               
 
                 if (Buttons_pnl_Sliding.Width >= panelwidth)
@@ -1295,7 +1285,115 @@ namespace Quering_module
             TablePnl.Visible = false;
             ResPnl.Visible = false;
             QueryPnl.Visible = true;
+            panel5.Visible = false;
             panel4.Visible = true;
+        }
+        SqlConnection con = new SqlConnection(connectionstring);
+        
+        private void Button8_Click(object sender, EventArgs e)
+        {
+            panel5.Visible = true;
+            SqlCommand cmd = new SqlCommand("select * from cars", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+             //   dataGridView1.DataSource = 
+            }
+            dr.Close();
+            con.Close();
+
+        }
+
+        private void Label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from cars", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                dataGridView1.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+            }
+            dr.Close();
+            con.Close();
+            //read();
+        }
+
+        private void Button10_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("exec sumStock", con);
+           // cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                MessageBox.Show(dr[0].ToString());
+            }
+            dr.Close();
+            con.Close();
+            //read();
+        }
+
+        private void Button11_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("exec AVgStock", con);
+            // cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                MessageBox.Show(dr[0].ToString());
+            }
+            dr.Close();
+            con.Close();
+        }
+
+        private void Button12_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("exec countCars", con);
+            // cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                MessageBox.Show(dr[0].ToString());
+            }
+            dr.Close();
+            con.Close();
+        }
+        public void read(string s1,string s2, string s3)
+        {
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from CARTABLE(" + s1 + ",'" + s2 + "','" + s3 + "')", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                dataGridView1.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+            }
+            dr.Close();
+            con.Close();
+        }
+
+        private void Label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            read(stock.Text, textBox5.Text, textBox6.Text);
         }
     }
 }

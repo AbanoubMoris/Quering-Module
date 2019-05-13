@@ -29,8 +29,6 @@ namespace Quering_module
         }
 
     }
-
-
     public class EmployeesList
     {
         public List<Employee> read()

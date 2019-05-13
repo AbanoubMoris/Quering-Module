@@ -75,6 +75,24 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.StockNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Make = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.stock = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.TablePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl)).BeginInit();
             this.Buttons_pnl_Sliding.SuspendLayout();
@@ -89,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // TablePnl
@@ -145,6 +165,7 @@
             // 
             this.Buttons_pnl_Sliding.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.Buttons_pnl_Sliding.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Buttons_pnl_Sliding.Controls.Add(this.button8);
             this.Buttons_pnl_Sliding.Controls.Add(this.button5);
             this.Buttons_pnl_Sliding.Controls.Add(this.button3);
             this.Buttons_pnl_Sliding.Controls.Add(this.button2);
@@ -166,7 +187,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(193, 42);
             this.button5.TabIndex = 3;
-            this.button5.Text = "SQL Query";
+            this.button5.Text = "SQL Query (Developers ONLY)";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -245,7 +266,7 @@
             this.panel4.Controls.Add(this.button6);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Location = new System.Drawing.Point(-2, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(704, 440);
             this.panel4.TabIndex = 24;
@@ -258,7 +279,7 @@
             this.sqlGridView.AllowUserToDeleteRows = false;
             this.sqlGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sqlGridView.Location = new System.Drawing.Point(376, 77);
-            this.sqlGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sqlGridView.Margin = new System.Windows.Forms.Padding(2);
             this.sqlGridView.Name = "sqlGridView";
             this.sqlGridView.ReadOnly = true;
             this.sqlGridView.RowTemplate.Height = 24;
@@ -268,7 +289,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(17, 77);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(248, 305);
@@ -329,7 +350,7 @@
             // clearButton
             // 
             this.clearButton.Location = new System.Drawing.Point(574, 391);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(2);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(92, 30);
             this.clearButton.TabIndex = 22;
@@ -615,7 +636,7 @@
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.pictureBox21);
             this.panel2.Location = new System.Drawing.Point(0, -2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(920, 42);
             this.panel2.TabIndex = 24;
@@ -628,7 +649,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(883, 0);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(37, 42);
             this.button4.TabIndex = 24;
@@ -636,11 +657,183 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.Control;
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Location = new System.Drawing.Point(4, 303);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(193, 42);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "SQL Query";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBox6);
+            this.panel5.Controls.Add(this.label13);
+            this.panel5.Controls.Add(this.label12);
+            this.panel5.Controls.Add(this.textBox5);
+            this.panel5.Controls.Add(this.label11);
+            this.panel5.Controls.Add(this.stock);
+            this.panel5.Controls.Add(this.button13);
+            this.panel5.Controls.Add(this.button12);
+            this.panel5.Controls.Add(this.button11);
+            this.panel5.Controls.Add(this.button10);
+            this.panel5.Controls.Add(this.button9);
+            this.panel5.Controls.Add(this.dataGridView1);
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Location = new System.Drawing.Point(209, 41);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(706, 437);
+            this.panel5.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(316, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Select Query";
+            this.label10.Click += new System.EventHandler(this.Label10_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StockNumber,
+            this.Make,
+            this.Model});
+            this.dataGridView1.Location = new System.Drawing.Point(37, 130);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(347, 276);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // StockNumber
+            // 
+            this.StockNumber.HeaderText = "StockNumber";
+            this.StockNumber.Name = "StockNumber";
+            // 
+            // Make
+            // 
+            this.Make.HeaderText = "Make";
+            this.Make.Name = "Make";
+            // 
+            // Model
+            // 
+            this.Model.HeaderText = "Model";
+            this.Model.Name = "Model";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(47, 56);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Select ALL";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(132, 56);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 41);
+            this.button10.TabIndex = 3;
+            this.button10.Text = "Sum StockNumber";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(214, 56);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 41);
+            this.button11.TabIndex = 4;
+            this.button11.Text = "Average StockNumber";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(295, 56);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 5;
+            this.button12.Text = "count";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.Button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(470, 57);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 22);
+            this.button13.TabIndex = 6;
+            this.button13.Text = "IN";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.Button13_Click);
+            // 
+            // stock
+            // 
+            this.stock.Location = new System.Drawing.Point(551, 85);
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(100, 20);
+            this.stock.TabIndex = 7;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(473, 88);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "StockNumber";
+            this.label11.Click += new System.EventHandler(this.Label11_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(551, 111);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 9;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(473, 114);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Make";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(473, 138);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Model";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(551, 138);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 479);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.QueryPnl);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Buttons_pnl_Sliding);
@@ -670,6 +863,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,6 +917,24 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView sqlGridView;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StockNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Make;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Model;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox stock;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
