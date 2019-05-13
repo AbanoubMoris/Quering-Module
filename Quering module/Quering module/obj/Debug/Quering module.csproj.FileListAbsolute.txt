@@ -60,3 +60,4 @@ C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\D
 C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.csproj.CoreCompileInputs.cache
 C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.exe
 C:\Users\hs\Documents\GitHub\Querying-Module\Quering module\Quering module\obj\Debug\Quering module.pdb
+C:\Users\Ramez\Documents\Quering model master\Quering module\Quering module\obj\Debug\Quering_module.Start.resources

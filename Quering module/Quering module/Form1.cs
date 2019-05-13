@@ -380,6 +380,7 @@ namespace Quering_module
             TablePnl.Visible = true;
             ResPnl.Visible = false;
             QueryPnl.Visible = false;
+            panel4.Visible = false;
 
 
         }
@@ -389,6 +390,7 @@ namespace Quering_module
             sound.Play();
             TablePnl.Visible = false;
             ResPnl.Visible = false;
+            panel4.Visible = false;
             QueryPnl.Visible = true;
             clear();
             resultGrid.DataSource = null;
@@ -414,6 +416,7 @@ namespace Quering_module
             SoundPlayer sound = new SoundPlayer("Button Click .wav");
             sound.Play();
             TablePnl.Visible = false;
+            panel4.Visible = false;
             ResPnl.Visible = true;
             QueryPnl.Visible = false;
             try
@@ -429,9 +432,9 @@ namespace Quering_module
             }
             catch(Exception ex)
             {
-                SoundPlayer snd = new SoundPlayer("sms-alert.wav");
-                snd.Play();
-                MessageBox.Show("Please Select A Table First");
+                    SoundPlayer snd = new SoundPlayer("sms-alert.wav");
+                    snd.Play();
+                    MessageBox.Show("Please Select A Table First");
             }
 
         }
@@ -890,6 +893,391 @@ namespace Quering_module
         private void button4_Click(object sender, EventArgs e)
         {
             timer1.Start();
+        }
+
+
+        void readEverything()
+        {
+            cars = new CarCollection();
+            carLst = cars.read();
+            deps = new DepartmentsList();
+            deplist = deps.read();
+            emps = new EmployeesList();
+            empList = emps.read();
+        }
+
+
+        // 1)select *  2)select column  3)COUNT  4)Sum  5)Avg
+        void sqlSerialze(string Query)
+        {
+            readEverything();
+            string[] newQuery = Query.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+            if (newQuery[0].ToLower() == "select")
+            {
+                // 1)Select *
+                if (newQuery[1] == "*")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            sqlGridView.DataSource = carLst;
+                        }
+                        else if(newQuery[3] == "Departments")
+                        {
+                            sqlGridView.DataSource = deplist;
+                        }
+                        else if(newQuery[3] == "Employees")
+                        {
+                            sqlGridView.DataSource = empList;
+                        }
+                    }
+                }
+
+                // 2)Select Column
+                if(newQuery[1] == "StockNumber")
+                {
+                    if(newQuery[2].ToLower() == "from")
+                    {
+                        if(newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("StockNumber", typeof(string)));
+                            for(int i=0; i<carLst.Count; i++)
+                            dt.Rows.Add(carLst[i].StockNumber);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Make")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Make", typeof(string)));
+                            for (int i = 0; i < carLst.Count; i++)
+                                dt.Rows.Add(carLst[i].Make);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Model")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Model", typeof(string)));
+                            for (int i = 0; i < carLst.Count; i++)
+                                dt.Rows.Add(carLst[i].Model);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "id")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("id", typeof(string)));
+                            for (int i = 0; i < deplist.Count; i++)
+                                dt.Rows.Add(deplist[i].id);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Name")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Name", typeof(string)));
+                            for (int i = 0; i < deplist.Count; i++)
+                                dt.Rows.Add(deplist[i].Name);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "NumOfEmployees")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("NumOfEmployees", typeof(string)));
+                            for (int i = 0; i < deplist.Count; i++)
+                                dt.Rows.Add(deplist[i].NumOfEmployees);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "id")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("id", typeof(string)));
+                            for (int i = 0; i < empList.Count; i++)
+                                dt.Rows.Add(empList[i].id);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Name")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Name", typeof(string)));
+                            for (int i = 0; i < empList.Count; i++)
+                                dt.Rows.Add(empList[i].Name);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Gender")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Gender", typeof(string)));
+                            for (int i = 0; i < empList.Count; i++)
+                                dt.Rows.Add(empList[i].Gender);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "Salary")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Salary", typeof(string)));
+                            for (int i = 0; i < empList.Count; i++)
+                                dt.Rows.Add(empList[i].Salary);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1] == "DepartmentId")
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("DepartmentId", typeof(string)));
+                            for (int i = 0; i < empList.Count; i++)
+                                dt.Rows.Add(empList[i].DepartmentId);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+
+                // 3)Select Count()
+                if (newQuery[1].ToLower().Contains("count") && (newQuery[1].Contains("StockNumber") || newQuery[1].Contains("Make") || newQuery[1].Contains("Model")) )
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Count", typeof(string)));
+                            dt.Rows.Add(carLst.Count);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("count") && (newQuery[1].Contains("NumOfEmployees") || newQuery[1].Contains("id") || newQuery[1].Contains("Name")))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Count", typeof(string)));
+                            dt.Rows.Add(deplist.Count);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("count") && (newQuery[1].Contains("Gender") || newQuery[1].Contains("id") || newQuery[1].Contains("Name") || newQuery[1].Contains("Salary") || newQuery[1].Contains("DepartmentId")))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Count", typeof(string)));
+                            dt.Rows.Add(empList.Count);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+
+                // 4)Select Sum()
+                if (newQuery[1].ToLower().Contains("sum") && newQuery[1].Contains("StockNumber"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Sum", typeof(string)));
+                            int result = 0;
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                result += int.Parse(carLst[i].StockNumber);
+                            }
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("sum") && newQuery[1].Contains("NumOfEmployees"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Sum", typeof(string)));
+                            int result = 0;
+                            for (int i = 0; i < deplist.Count; i++)
+                            {
+                                result += int.Parse(deplist[i].NumOfEmployees);
+                            }
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("sum") && newQuery[1].Contains("Salary"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Sum", typeof(string)));
+                            int result = 0;
+                            for (int i = 0; i < empList.Count; i++)
+                            {
+                                result += int.Parse(empList[i].Salary);
+                            }
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+
+                // 5)Avg()
+                if (newQuery[1].ToLower().Contains("avg") && newQuery[1].Contains("StockNumber"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "cars")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Average", typeof(string)));
+                            double result = 0;
+                            for (int i = 0; i < carLst.Count; i++)
+                            {
+                                result += double.Parse(carLst[i].StockNumber);
+                            }
+                            result /= carLst.Count;
+                            result = Math.Round(result, 3);
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("avg") && newQuery[1].Contains("NumOfEmployees"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Departments")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Average", typeof(string)));
+                            double result = 0;
+                            for (int i = 0; i < deplist.Count; i++)
+                            {
+                                result += double.Parse(deplist[i].NumOfEmployees);
+                            }
+                            result /= deplist.Count;
+                            result = Math.Round(result, 3);
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+                if (newQuery[1].ToLower().Contains("avg") && newQuery[1].Contains("Salary"))
+                {
+                    if (newQuery[2].ToLower() == "from")
+                    {
+                        if (newQuery[3] == "Employees")
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add(new DataColumn("Average", typeof(string)));
+                            double result = 0;
+                            for (int i = 0; i < empList.Count; i++)
+                            {
+                                result += double.Parse(empList[i].Salary);
+                            }
+                            result /= empList.Count;
+                            result = Math.Round(result, 3);
+                            dt.Rows.Add(result);
+                            sqlGridView.DataSource = dt;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = "";
+            sqlGridView.DataSource = null;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            sqlSerialze(textBox3.Text);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            TablePnl.Visible = false;
+            ResPnl.Visible = false;
+            QueryPnl.Visible = true;
+            panel4.Visible = true;
         }
     }
 }
