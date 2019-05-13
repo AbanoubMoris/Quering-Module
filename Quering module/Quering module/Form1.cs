@@ -9,12 +9,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
+using System.Data.SqlClient;
+
 namespace Quering_module
 {
 
     public partial class Form1 : Form
     {
-       
+        static string connectionstring = @"Data Source=ERROR-404\SQLEXPRESS;Initial Catalog=QueryingModule;Integrated Security=True";
+
+        public void read()
+        {
+            SqlConnection con = new SqlConnection(connectionstring);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from CARTABLE(1010,'null','null')", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                MessageBox.Show(dr["Make"].ToString());
+            }
+            dr.Close();
+            con.Close();
+        }
+        
         bool hidden = false;
         int panelwidth;
         List<string> L =  new List<string>();
@@ -858,10 +876,10 @@ namespace Quering_module
             }
             else
             {
-                Buttons_pnl_Sliding.Width -= 10;
-                TablePnl.Left -= 10;
-                QueryPnl.Left -= 10;
-                ResPnl.Left -= 10;
+                Buttons_pnl_Sliding.Width -= 15;
+                TablePnl.Left -= 15;
+                QueryPnl.Left -= 15;
+                ResPnl.Left -= 15;
                
                 
                 if (Buttons_pnl_Sliding.Width <= 0)
