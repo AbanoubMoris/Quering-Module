@@ -731,65 +731,80 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(47, 56);
+            this.button9.BackColor = System.Drawing.Color.Brown;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(421, 172);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.Size = new System.Drawing.Size(109, 41);
             this.button9.TabIndex = 2;
             this.button9.Text = "Select ALL";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(132, 56);
+            this.button10.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(496, 131);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 41);
+            this.button10.Size = new System.Drawing.Size(128, 41);
             this.button10.TabIndex = 3;
             this.button10.Text = "Sum StockNumber";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.Button10_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(214, 56);
+            this.button11.BackColor = System.Drawing.Color.Chartreuse;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(530, 172);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 41);
+            this.button11.Size = new System.Drawing.Size(94, 41);
             this.button11.TabIndex = 4;
             this.button11.Text = "Average StockNumber";
-            this.button11.UseVisualStyleBackColor = true;
+            this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(295, 56);
+            this.button12.BackColor = System.Drawing.Color.Coral;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button12.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(624, 131);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.Size = new System.Drawing.Size(65, 82);
             this.button12.TabIndex = 5;
             this.button12.Text = "count";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.Button12_Click);
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(470, 57);
+            this.button13.BackColor = System.Drawing.Color.Crimson;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button13.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(421, 131);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 22);
+            this.button13.Size = new System.Drawing.Size(75, 41);
             this.button13.TabIndex = 6;
             this.button13.Text = "IN";
-            this.button13.UseVisualStyleBackColor = true;
+            this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.Button13_Click);
             // 
             // stock
             // 
-            this.stock.Location = new System.Drawing.Point(551, 85);
+            this.stock.Location = new System.Drawing.Point(511, 233);
             this.stock.Name = "stock";
-            this.stock.Size = new System.Drawing.Size(100, 20);
+            this.stock.Size = new System.Drawing.Size(174, 20);
             this.stock.TabIndex = 7;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(473, 88);
+            this.label11.Location = new System.Drawing.Point(422, 236);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 13);
             this.label11.TabIndex = 8;
@@ -798,15 +813,15 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(551, 111);
+            this.textBox5.Location = new System.Drawing.Point(511, 259);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.Size = new System.Drawing.Size(174, 20);
             this.textBox5.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(473, 114);
+            this.label12.Location = new System.Drawing.Point(422, 262);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 13);
             this.label12.TabIndex = 10;
@@ -815,7 +830,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(473, 138);
+            this.label13.Location = new System.Drawing.Point(422, 286);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
             this.label13.TabIndex = 11;
@@ -823,9 +838,9 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(551, 138);
+            this.textBox6.Location = new System.Drawing.Point(511, 286);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.Size = new System.Drawing.Size(174, 20);
             this.textBox6.TabIndex = 12;
             // 
             // Form1

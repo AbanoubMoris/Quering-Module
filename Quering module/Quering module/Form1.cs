@@ -1312,6 +1312,7 @@ namespace Quering_module
 
         private void Button9_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from cars", con);
             cmd.CommandType = CommandType.Text;
